@@ -7,4 +7,18 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- Flip Color book -->
+    <color name="flip_white">#EAE9F9</color>
+    <color name="flip_lpurple">#BDBCFB</color>
+    <color name="flip_pink">#D594F2</color>
+    <color name="flip_pruple">#5545bf</color>
+    <color name="flip_navy">#2D2c58</color>
+    <color name="flip_dnavy">#1D1B40</color>
+
+
+
+
+
+
 </resources>

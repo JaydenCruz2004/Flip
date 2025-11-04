@@ -16,9 +16,22 @@
     <color name="flip_navy">#2D2c58</color>
     <color name="flip_dnavy">#1D1B40</color>
 
+        <!-- Palette from the mock -->
+        <color name="flip_tint_light">#EAE9F9</color>   <!-- near-white lavender -->
+        <color name="flip_mid">#BDBCFB</color>
+        <color name="flip_accent">#D594F2</color>
+        <color name="flip_primary">#55458F</color>
+        <color name="flip_bg_mid">#2D2C58</color>
+        <color name="flip_bg_dark">#1D1B40</color>
+
+        <!-- Derived tokens -->
+        <color name="flip_light">#EAE9F9</color>
+        <color name="flip_fill">#F4F3FE</color>         <!-- slightly lighter for filled inputs -->
+        <color name="flip_divider">#DDDBF4</color>
+        <color name="flip_ink">#1D1B40</color>
+        <color name="flip_ink_soft">#6A6794</color>
+    </resources>
 
 
 
 
-
-</resources>

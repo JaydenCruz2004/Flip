@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/flip_bg_dark">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:id="@+id/scoreText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Score: 0/5"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/flip_accent"
+            android:layout_gravity="end"
+            android:layout_marginBottom="16dp"/>
+
+        <TextView
+            android:id="@+id/questionNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Question 1/5"
+            android:textSize="16sp"
+            android:textColor="@color/flip_mid"
+            android:layout_marginBottom="8dp"/>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:elevation="4dp">
+
+            <TextView
+                android:id="@+id/questionText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Question will appear here"
+                android:textSize="18sp"
+                android:textColor="@color/flip_tint_light"
+                android:padding="20dp"
+                android:background="@color/flip_bg_mid"/>
+
+        </androidx.cardview.widget.CardView>
+
+        <RadioGroup
+            android:id="@+id/optionsGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/optionA"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="a. Option A"
+                android:textSize="16sp"
+                android:textColor="@color/flip_tint_light"
+                android:padding="16dp"
+                android:background="@color/flip_bg_mid"
+                android:layout_marginBottom="8dp"/>
+
+            <RadioButton
+                android:id="@+id/optionB"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="b. Option B"
+                android:textSize="16sp"
+                android:textColor="@color/flip_tint_light"
+                android:padding="16dp"
+                android:background="@color/flip_bg_mid"
+                android:layout_marginBottom="8dp"/>
+
+            <RadioButton
+                android:id="@+id/optionC"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="c. Option C"
+                android:textSize="16sp"
+                android:textColor="@color/flip_tint_light"
+                android:padding="16dp"
+                android:background="@color/flip_bg_mid"
+                android:layout_marginBottom="8dp"/>
+
+            <RadioButton
+                android:id="@+id/optionD"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="d. Option D"
+                android:textSize="16sp"
+                android:textColor="@color/flip_tint_light"
+                android:padding="16dp"
+                android:background="@color/flip_bg_mid"
+                android:layout_marginBottom="24dp"/>
+
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/submitButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Submit Answer"
+            android:textSize="16sp"
+            android:textColor="@color/flip_tint_light"
+            android:background="@color/flip_accent"
+            android:padding="16dp"
+            android:layout_marginBottom="8dp"/>
+
+        <Button
+            android:id="@+id/nextButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Next Question"
+            android:textSize="16sp"
+            android:textColor="@color/flip_tint_light"
+            android:background="@color/flip_primary"
+            android:padding="16dp"
+            android:visibility="gone"/>
+
+    </LinearLayout>
+
+</ScrollView>

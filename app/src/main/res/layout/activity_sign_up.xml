@@ -238,23 +238,10 @@
                     android:layout_width="12dp"
                     android:layout_height="1dp" />
 
-                <ImageButton
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:background="@drawable/bg_social_circle"
-                    android:src="@drawable/ic_apple"
-                    android:tint="@color/flip_primary" />
-
                 <Space
                     android:layout_width="12dp"
                     android:layout_height="1dp" />
 
-                <ImageButton
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:background="@drawable/bg_social_circle"
-                    android:src="@drawable/ic_facebook"
-                    android:tint="@color/flip_primary" />
             </LinearLayout>
 
             <!-- footer sign-up -->

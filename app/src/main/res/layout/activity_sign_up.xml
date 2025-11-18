@@ -181,6 +181,7 @@
                 android:layout_marginTop="16dp"
                 android:text="Sign in"
                 android:textAllCaps="false"
+                android:textSize="18sp"
                 android:textStyle="bold"
                 android:insetTop="12dp"
                 android:insetBottom="12dp"

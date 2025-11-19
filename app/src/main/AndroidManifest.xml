@@ -28,6 +28,13 @@
         <activity
             android:name=".SignUpActivity"
             android:exported="true" />
+        <activity
+            android:name=".StartQuizActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".QuizActivity"
+            android:exported="false" />
 
         <!-- Keep MainActivity for later use -->
         <activity

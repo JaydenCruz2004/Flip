@@ -54,7 +54,6 @@ public class SignUpActivity extends AppCompatActivity {
             finish();
         });
 
-        // Safe insets -> use correct root ID
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.root), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -102,7 +101,6 @@ public class SignUpActivity extends AppCompatActivity {
                             Toast.makeText(SignUpActivity.this,
                                     "Account created!", Toast.LENGTH_SHORT).show();
 
-                            // Go back to login & autofill email
                             Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
                             intent.putExtra(User.E_KEY, email);
                             startActivity(intent);

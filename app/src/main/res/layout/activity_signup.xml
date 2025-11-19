@@ -74,7 +74,7 @@
                 android:id="@+id/title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Sign in"
+                android:text="Create Account"
                 android:textColor="@color/flip_ink"
                 android:textStyle="bold"
                 android:textSize="22sp" />
@@ -84,16 +84,42 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:text="Welcome back 👋"
+                android:text="Start your learning journey 🚀"
                 android:textColor="@color/flip_ink_soft"
                 android:textSize="14sp" />
+
+            <!-- Full Name -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/nameLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:boxBackgroundMode="filled"
+                app:boxCornerRadiusTopStart="16dp"
+                app:boxCornerRadiusTopEnd="16dp"
+                app:boxCornerRadiusBottomStart="16dp"
+                app:boxCornerRadiusBottomEnd="16dp"
+                app:boxBackgroundColor="@color/flip_fill"
+                app:hintTextColor="@color/flip_ink_soft"
+                app:startIconDrawable="@drawable/ic_user"
+                app:startIconTint="@color/flip_primary">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/nameET"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:hint="Full Name"
+                    android:textColor="@color/flip_ink"
+                    android:textColorHint="@color/flip_ink_soft"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
             <!-- email -->
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/emailLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="12dp"
                 app:boxBackgroundMode="filled"
                 app:boxCornerRadiusTopStart="16dp"
                 app:boxCornerRadiusTopEnd="16dp"
@@ -105,7 +131,7 @@
                 app:startIconTint="@color/flip_primary">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/email"
+                    android:id="@+id/emailET"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textEmailAddress"
@@ -133,7 +159,7 @@
                 app:endIconTint="@color/flip_primary">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/password"
+                    android:id="@+id/passwordET"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
@@ -142,44 +168,44 @@
                     android:textColorHint="@color/flip_ink_soft"/>
             </com.google.android.material.textfield.TextInputLayout>
 
-            <!-- options row -->
-            <LinearLayout
+            <!-- Confirm Password -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/confirmPasswordLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:layout_marginTop="8dp">
+                android:layout_marginTop="12dp"
+                app:boxBackgroundMode="filled"
+                app:boxCornerRadiusTopStart="16dp"
+                app:boxCornerRadiusTopEnd="16dp"
+                app:boxCornerRadiusBottomStart="16dp"
+                app:boxCornerRadiusBottomEnd="16dp"
+                app:boxBackgroundColor="@color/flip_fill"
+                app:hintTextColor="@color/flip_ink_soft"
+                app:startIconDrawable="@drawable/ic_lock"
+                app:startIconTint="@color/flip_primary"
+                app:endIconMode="password_toggle"
+                app:endIconTint="@color/flip_primary">
 
-                <CheckBox
-                    android:id="@+id/remember"
-                    android:layout_width="wrap_content"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/confirmPasswordET"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Remember me"
+                    android:inputType="textPassword"
+                    android:hint="Confirm Password"
                     android:textColor="@color/flip_ink"
-                    android:buttonTint="@color/flip_primary"/>
+                    android:textColorHint="@color/flip_ink_soft"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
-                <Space
-                    android:layout_width="0dp"
-                    android:layout_height="1dp"
-                    android:layout_weight="1"/>
+            <!-- Terms checkbox -->
 
-                <TextView
-                    android:id="@+id/forgot"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Forgot password?"
-                    android:textStyle="bold"
-                    android:textColor="@color/flip_primary"/>
-            </LinearLayout>
-
-            <!-- sign up-->
+            <!-- sign up button -->
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnSignIn"
+                android:id="@+id/signUpButton"
                 style="@style/Widget.Material3.Button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Sign in"
+                android:text="Create Account"
                 android:textAllCaps="false"
                 android:textSize="18sp"
                 android:textStyle="bold"
@@ -208,7 +234,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="8dp"
-                    android:text="or continue with"
+                    android:text="or sign up with"
                     android:textColor="@color/flip_ink_soft"
                     android:textSize="12sp"/>
 
@@ -228,6 +254,7 @@
                 android:orientation="horizontal">
 
                 <ImageButton
+                    android:id="@+id/googleButton"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:background="@drawable/bg_social_circle"
@@ -244,7 +271,7 @@
 
             </LinearLayout>
 
-            <!-- footer sign-up -->
+            <!-- footer sign-in -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -255,15 +282,15 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="New to FLIP?"
+                    android:text="Already have an account?"
                     android:textColor="@color/flip_ink_soft"/>
 
                 <TextView
-                    android:id="@+id/goToSignUp"
+                    android:id="@+id/goToSignIn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:text="Create an account"
+                    android:text="Sign in"
                     android:textStyle="bold"
                     android:textColor="@color/flip_primary"/>
             </LinearLayout>

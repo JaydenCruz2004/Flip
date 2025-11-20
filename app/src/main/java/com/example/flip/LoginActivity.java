@@ -63,9 +63,6 @@ public class LoginActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
 
-            // Debug toast
-            Toast.makeText(LoginActivity.this, "Login clicked", Toast.LENGTH_SHORT).show();
-
             final String username = emailET.getText().toString().trim();
             final String password = passwordET.getText().toString().trim();
 
@@ -82,8 +79,6 @@ public class LoginActivity extends AppCompatActivity {
 
                             if (task.isSuccessful()) {
 
-                                Toast.makeText(LoginActivity.this, "Firebase Auth OK", Toast.LENGTH_SHORT).show();
-
                                 DatabaseReference refUsers = database.getReference("users");
 
                                 refUsers.orderByChild("email")
@@ -93,9 +88,6 @@ public class LoginActivity extends AppCompatActivity {
                                             @Override
                                             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                                                Toast.makeText(LoginActivity.this,
-                                                        "DB Children: " + snapshot.getChildrenCount(),
-                                                        Toast.LENGTH_SHORT).show();
 
                                                 Intent gotoMain = new Intent(LoginActivity.this, MainActivity.class);
 

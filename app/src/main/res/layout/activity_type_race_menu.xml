@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:gravity="center"
+    android:background="@color/flip_bg_dark">
+
+    <!-- Title -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="⚡ Type Race"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        android:textColor="@color/flip_accent"
+        android:layout_marginBottom="8dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Type fast, score big!"
+        android:textSize="16sp"
+        android:textColor="@color/flip_mid"
+        android:layout_marginBottom="48dp"/>
+
+    <!-- Quiz Selection Cards -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="4dp"
+        app:cardBackgroundColor="@color/flip_bg_mid">
+
+        <Button
+            android:id="@+id/mathQuizButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="🔢 Math Quiz\n10 Quick Calculations"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/flip_tint_light"
+            android:background="?attr/selectableItemBackground"
+            android:padding="24dp"
+            android:gravity="center"/>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="4dp"
+        app:cardBackgroundColor="@color/flip_bg_mid">
+
+        <Button
+            android:id="@+id/geographyQuizButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="🌍 Geography Quiz\nCapitals and Landmarks"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/flip_tint_light"
+            android:background="?attr/selectableItemBackground"
+            android:padding="24dp"
+            android:gravity="center"/>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="4dp"
+        app:cardBackgroundColor="@color/flip_bg_mid">
+
+        <Button
+            android:id="@+id/scienceQuizButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="🔬 Science Quiz\nChemistry and Physics"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/flip_tint_light"
+            android:background="?attr/selectableItemBackground"
+            android:padding="24dp"
+            android:gravity="center"/>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Instructions -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="💡 Tip: Answer quickly for maximum points!\n⏱️ You have 15 seconds per question"
+        android:textSize="14sp"
+        android:textColor="@color/flip_mid"
+        android:gravity="center"
+        android:layout_marginTop="24dp"/>
+
+</LinearLayout>

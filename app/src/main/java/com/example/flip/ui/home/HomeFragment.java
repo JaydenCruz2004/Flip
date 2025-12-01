@@ -42,8 +42,8 @@ public class HomeFragment extends Fragment {
 
         // Populate sections
         populateLeaderboard();
-        populateRecentActivity();
-        populateSchedule();
+//        populateRecentActivity();
+//        populateSchedule();
 
         return root;
     }
@@ -72,8 +72,8 @@ public class HomeFragment extends Fragment {
     }
 
     private void addLeaderboardItem(String username, int points, int position) {
-        View itemView = LayoutInflater.from(getContext())
-                .inflate(R.layout.item_leaderboard, leaderboardContainer, false);
+        //View itemView = LayoutInflater.from(getContext())
+          //      .inflate(R.layout.item_leaderboard, leaderboardContainer, false);
 
         // Set up the leaderboard item views here
         // TextView usernameTV = itemView.findViewById(R.id.leaderboardUsername);
@@ -81,42 +81,42 @@ public class HomeFragment extends Fragment {
         // usernameTV.setText("@" + username);
         // pointsTV.setText(points + " pts");
 
-        leaderboardContainer.addView(itemView);
+        //leaderboardContainer.addView(itemView);
     }
 
-    private void populateRecentActivity() {
-        // Mock activity data
-        addActivityItem("KayBear35", "invited you to play InfoSystems Ch3", "30m");
-        addActivityItem("Micah25", "Requested to follow you", "2hr");
-        addActivityItem("Sam_Jones", "Requested to follow you", "1D");
-    }
+//    private void populateRecentActivity() {
+//        // Mock activity data
+//        addActivityItem("KayBear35", "invited you to play InfoSystems Ch3", "30m");
+//        addActivityItem("Micah25", "Requested to follow you", "2hr");
+//        addActivityItem("Sam_Jones", "Requested to follow you", "1D");
+//    }
 
-    private void addActivityItem(String username, String action, String time) {
-        View itemView = LayoutInflater.from(getContext())
-                .inflate(R.layout.item_activity, activityContainer, false);
+//    private void addActivityItem(String username, String action, String time) {
+//        View itemView = LayoutInflater.from(getContext())
+//                .inflate(R.layout.item_activity, activityContainer, false);
+//
+//        // Set up the activity item views here
+//
+//        activityContainer.addView(itemView);
+//    }
 
-        // Set up the activity item views here
+//    private void populateSchedule() {
+//        // Mock schedule data
+//        String[] times = {"9:00", "10:00", "11:00", "12:00", "1:00", "2:00", "3:00", "4:00"};
+//
+//        for (String time : times) {
+//            addScheduleItem(time);
+//        }
+//    }
 
-        activityContainer.addView(itemView);
-    }
-
-    private void populateSchedule() {
-        // Mock schedule data
-        String[] times = {"9:00", "10:00", "11:00", "12:00", "1:00", "2:00", "3:00", "4:00"};
-
-        for (String time : times) {
-            addScheduleItem(time);
-        }
-    }
-
-    private void addScheduleItem(String time) {
-        View itemView = LayoutInflater.from(getContext())
-                .inflate(R.layout.item_schedule, scheduleContainer, false);
-
-        // Set up the schedule item views here
-
-        scheduleContainer.addView(itemView);
-    }
+//    private void addScheduleItem(String time) {
+//        View itemView = LayoutInflater.from(getContext())
+//                .inflate(R.layout.item_schedule, scheduleContainer, false);
+//
+//        // Set up the schedule item views here
+//
+//        scheduleContainer.addView(itemView);
+//    }
 
     private String getOrdinal(int number) {
         String[] suffixes = {"TH", "ST", "ND", "RD", "TH", "TH", "TH", "TH", "TH", "TH"};

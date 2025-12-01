@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:background="@color/flip_bg_dark">
+
+    <!-- Header Section -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="16dp">
+
+        <TextView
+            android:id="@+id/questionNumber"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Question 1/10"
+            android:textSize="16sp"
+            android:textColor="@color/flip_mid"/>
+
+        <TextView
+            android:id="@+id/scoreText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Score: 0"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/flip_accent"/>
+    </LinearLayout>
+
+    <!-- Timer -->
+    <TextView
+        android:id="@+id/timerText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="0.0s"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        android:textColor="@color/flip_accent"
+        android:layout_marginBottom="24dp"/>
+
+    <!-- Question Card -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="4dp"
+        app:cardBackgroundColor="@color/flip_bg_mid"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+        <TextView
+            android:id="@+id/questionText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="What is the capital of France?"
+            android:textSize="22sp"
+            android:textColor="@color/flip_tint_light"
+            android:textStyle="bold"
+            android:padding="24dp"
+            android:gravity="center"/>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Answer Input -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        app:boxBackgroundMode="filled"
+        app:boxCornerRadiusTopStart="16dp"
+        app:boxCornerRadiusTopEnd="16dp"
+        app:boxCornerRadiusBottomStart="16dp"
+        app:boxCornerRadiusBottomEnd="16dp"
+        app:boxBackgroundColor="@color/flip_bg_mid"
+        app:hintTextColor="@color/flip_mid">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/answerInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Type your answer..."
+            android:textSize="18sp"
+            android:textColor="@color/flip_tint_light"
+            android:textColorHint="@color/flip_mid"
+            android:inputType="text"
+            android:imeOptions="actionDone"
+            android:padding="16dp"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Submit Button -->
+    <Button
+        android:id="@+id/submitButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Submit Answer"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@color/flip_tint_light"
+        android:background="@color/flip_primary"
+        android:padding="16dp"
+        android:layout_marginBottom="24dp"/>
+
+    <!-- Feedback Text -->
+    <TextView
+        android:id="@+id/feedbackText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="✓ CORRECT! +1000 pts"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@color/flip_accent"
+        android:gravity="center"
+        android:visibility="invisible"
+        android:layout_marginTop="16dp"/>
+
+</LinearLayout>

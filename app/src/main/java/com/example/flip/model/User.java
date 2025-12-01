@@ -17,6 +17,7 @@ public class User {
     private int points;
     private int streak;
     private int ranking;
+    private int gamesPlayed;
 
 
     public User() {
@@ -68,5 +69,17 @@ public class User {
     }
     public void setStreak(int streak) {
         this.streak = streak;
+    }
+    public int getRanking() {
+        return ranking;
+    }
+    public void setRanking(int ranking) {
+        this.ranking = ranking;
+    }
+    public int getGamesPlayed() {
+        return gamesPlayed;
+    }
+    public void setGamesPlayed(int gamesPlayed) {
+        this.gamesPlayed = gamesPlayed;
     }
 }

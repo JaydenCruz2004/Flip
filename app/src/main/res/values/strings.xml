@@ -9,4 +9,9 @@
     <string name="title_leaderboard">leaderboard</string>
     <string name="title_games">games</string>
     <string name="title_add">add</string>
+    <string name="placeholder_streak">🔥 36 Day Streak</string>
+    <string name="placeholderUsername">\@kokoOnTop</string>
+    <string name="leaderboard">Leaderboard</string>
+    <string name="invites_amp_new_friends"><![CDATA[Invites & New Friends]]></string>
+    <string name="available_group_study_times">Available Group Study Times</string>
 </resources>

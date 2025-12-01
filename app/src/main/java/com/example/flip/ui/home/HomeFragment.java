@@ -12,7 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.flip.R;
-import com.example.flip.model.Profile;
+import com.example.flip.model.User;
 
 public class HomeFragment extends Fragment {
 
@@ -29,7 +29,9 @@ public class HomeFragment extends Fragment {
         profileImage = root.findViewById(R.id.profileImage);
         usernameText = root.findViewById(R.id.usernameText);
         streakBadge = root.findViewById(R.id.streakBadge);
+        rankingValue = root.findViewById(R.id.rankingValue);
         pointsValue = root.findViewById(R.id.pointsValue);
+        gamesValue = root.findViewById(R.id.gamesValue);
 
         leaderboardContainer = root.findViewById(R.id.leaderboardContainer);
         activityContainer = root.findViewById(R.id.activityContainer);
@@ -48,11 +50,18 @@ public class HomeFragment extends Fragment {
 
     private void loadProfileData() {
         // Mock data - later you'll load this from Firebase
-        Profile profile = new Profile("kokoOnTop", "placeholder_url", 1500, 3);
+        User user = new User();
+        user.setUsername("Loganwins");
+        user.setStreak(36);
+        user.setRanking(5);
+        user.setPoints(987);
+        user.setGamesPlayed(105);
 
-        usernameText.setText("@" + profile.getUsername());
-        streakBadge.setText("🔥 " + profile.getStreak() + " Day Streak");
-        pointsValue.setText(String.valueOf(profile.getPoints()));
+        usernameText.setText("@" + user.getUsername());
+        streakBadge.setText("🔥 " + user.getStreak() + " Day Streak");
+        rankingValue.setText(getOrdinal(user.getRanking()));
+        pointsValue.setText(String.valueOf(user.getPoints()));
+        gamesValue.setText(String.valueOf(user.getGamesPlayed()));
     }
 
     private void populateLeaderboard() {

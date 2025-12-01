@@ -5,9 +5,18 @@ public class User {
     public static final String E_KEY = "EMAILV";
     public static final String P_KEY = "PASSWORDV";
 
+    // Authentication fields
     private String email;
     private String pass;
     private String name;
+    private String uid;
+
+    // Profile and data fields
+    private String Username;
+    private String profileImageUrl;
+    private int points;
+    private int streak;
+    private int ranking;
 
 
     public User() {
@@ -34,5 +43,30 @@ public class User {
     }
     public String getName() {
         return name;
+    }
+
+    public String getUsername() {
+        return Username;
+    }
+    public void setUsername(String username) {
+        Username = username;
+    }
+    public String getProfileImageUrl() {
+        return profileImageUrl;
+    }
+    public void setProfileImageUrl(String profileImageUrl) {
+        this.profileImageUrl = profileImageUrl;
+    }
+    public int getPoints() {
+        return points;
+    }
+    public void setPoints(int points) {
+        this.points = points;
+    }
+    public int getStreak() {
+        return streak;
+    }
+    public void setStreak(int streak) {
+        this.streak = streak;
     }
 }

@@ -46,7 +46,15 @@
             android:name=".TypeRaceActivity"
             android:exported="false" />
 
-        <!-- Keep MainActivity for later use -->
+        <activity
+            android:name=".MemoryMatchSetupActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".MemoryMatchGameActivity"
+            android:exported="false" />
+
+
         <activity
             android:name=".MainActivity"
             android:exported="true"

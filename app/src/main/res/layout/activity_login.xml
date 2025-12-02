@@ -150,26 +150,11 @@
                 android:gravity="center_vertical"
                 android:layout_marginTop="8dp">
 
-                <CheckBox
-                    android:id="@+id/rememberCBox"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Remember me"
-                    android:textColor="@color/flip_ink"
-                    android:buttonTint="@color/flip_primary"/>
-
                 <Space
                     android:layout_width="0dp"
                     android:layout_height="1dp"
                     android:layout_weight="1"/>
 
-                <TextView
-                    android:id="@+id/forgot"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Forgot password?"
-                    android:textStyle="bold"
-                    android:textColor="@color/flip_primary"/>
             </LinearLayout>
 
             <!-- sign up-->
@@ -204,14 +189,6 @@
                     android:layout_weight="1"
                     android:background="@color/flip_divider"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="8dp"
-                    android:text="or continue with"
-                    android:textColor="@color/flip_ink_soft"
-                    android:textSize="12sp"/>
-
                 <View
                     android:layout_width="0dp"
                     android:layout_height="1dp"
@@ -226,14 +203,6 @@
                 android:layout_marginTop="12dp"
                 android:gravity="center"
                 android:orientation="horizontal">
-
-                <ImageButton
-                    android:id="@+id/googleButton"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:background="@drawable/bg_social_circle"
-                    android:src="@drawable/ic_google"
-                    android:tint="@color/flip_primary" />
 
                 <Space
                     android:layout_width="12dp"

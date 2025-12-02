@@ -5,6 +5,7 @@ import java.io.Serializable;
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    public static final String U_KEY = "USERNAMEV";
     public static final String E_KEY = "EMAILV";
     public static final String P_KEY = "PASSWORDV";
 
@@ -31,8 +32,8 @@ public class User implements Serializable {
         this.email = email;
     }
 
-    public void setPass(String pass) {
-        this.pass = pass;
+    public void setUser(String Username) {
+        this.Username = Username;
     }
     public void setName(String name) {
         this.name = name;
@@ -42,8 +43,8 @@ public class User implements Serializable {
         return email;
     }
 
-    public String getPass() {
-        return pass;
+    public String getUser() {
+        return Username;
     }
     public String getName() {
         return name;

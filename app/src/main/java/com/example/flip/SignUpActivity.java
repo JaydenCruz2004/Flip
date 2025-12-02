@@ -22,7 +22,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class SignUpActivity extends AppCompatActivity {
 
-    private TextInputEditText nameET, emailET, passwordET, confirmPasswordET;
+    private TextInputEditText nameET,usernameET, emailET, passwordET, confirmPasswordET;
     private View signUpButton;
     private View goToSignIn;
 
@@ -35,6 +35,7 @@ public class SignUpActivity extends AppCompatActivity {
         setContentView(R.layout.activity_signup);
 
         nameET = findViewById(R.id.nameET);
+        usernameET = findViewById(R.id.usernameET);
         emailET = findViewById(R.id.emailET);
         passwordET = findViewById(R.id.passwordET);
         confirmPasswordET = findViewById(R.id.confirmPasswordET);
@@ -65,12 +66,13 @@ public class SignUpActivity extends AppCompatActivity {
     private void onSignUp() {
 
         String name = nameET.getText().toString().trim();
+        String username = usernameET.getText().toString().trim();
         String email = emailET.getText().toString().trim();
         String password = passwordET.getText().toString().trim();
         String confirmPass = confirmPasswordET.getText().toString().trim();
 
         // Basic validation
-        if (name.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPass.isEmpty()) {
+        if (name.isEmpty() || username.isEmpty()|| email.isEmpty() || password.isEmpty() || confirmPass.isEmpty()) {
             Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -90,13 +92,16 @@ public class SignUpActivity extends AppCompatActivity {
 
                             // Save user to realtime database
                             DatabaseReference usersRef = database.getReference("users");
-                            String uid = usersRef.push().getKey();
+                            String uid = auth.getCurrentUser().getUid();
 
                             User user = new User();
+                            user.setUser(username);
                             user.setEmail(email);
-                            user.setPass(password);
+
+
 
                             usersRef.child(uid).setValue(user);
+
 
                             Toast.makeText(SignUpActivity.this,
                                     "Account created!", Toast.LENGTH_SHORT).show();

@@ -97,7 +97,7 @@ public class LoginActivity extends AppCompatActivity {
                                                             .getValue(User.class);
 
                                                     gotoMain.putExtra(User.E_KEY, current.getEmail());
-                                                    gotoMain.putExtra(User.P_KEY, current.getPass());
+                                                    gotoMain.putExtra(User.P_KEY, current.getUser());
                                                 } else {
                                                     gotoMain.putExtra(User.E_KEY, username);
                                                 }

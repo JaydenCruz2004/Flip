@@ -27,7 +27,7 @@
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:src="@drawable/ic_flip_mark"
-            android:tint="@color/flip_accent" />
+            app:tint="@color/flip_accent" />
 
         <TextView
             android:id="@+id/appName"
@@ -110,6 +110,32 @@
                     android:layout_height="wrap_content"
                     android:inputType="textPersonName"
                     android:hint="Full Name"
+                    android:textColor="@color/flip_ink"
+                    android:textColorHint="@color/flip_ink_soft"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- USer Name -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/usernameLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:boxBackgroundMode="filled"
+                app:boxCornerRadiusTopStart="16dp"
+                app:boxCornerRadiusTopEnd="16dp"
+                app:boxCornerRadiusBottomStart="16dp"
+                app:boxCornerRadiusBottomEnd="16dp"
+                app:boxBackgroundColor="@color/flip_fill"
+                app:hintTextColor="@color/flip_ink_soft"
+                app:startIconDrawable="@drawable/ic_user"
+                app:startIconTint="@color/flip_primary">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/usernameET"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:hint="@string/username"
                     android:textColor="@color/flip_ink"
                     android:textColorHint="@color/flip_ink_soft"/>
             </com.google.android.material.textfield.TextInputLayout>
@@ -217,59 +243,8 @@
                 android:textColor="@android:color/white"/>
 
             <!-- Divider -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="1dp"
-                    android:layout_weight="1"
-                    android:background="@color/flip_divider"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="8dp"
-                    android:text="or sign up with"
-                    android:textColor="@color/flip_ink_soft"
-                    android:textSize="12sp"/>
-
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="1dp"
-                    android:layout_weight="1"
-                    android:background="@color/flip_divider"/>
-            </LinearLayout>
 
             <!-- Social buttons -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <ImageButton
-                    android:id="@+id/googleButton"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:background="@drawable/bg_social_circle"
-                    android:src="@drawable/ic_google"
-                    android:tint="@color/flip_primary" />
-
-                <Space
-                    android:layout_width="12dp"
-                    android:layout_height="1dp" />
-
-                <Space
-                    android:layout_width="12dp"
-                    android:layout_height="1dp" />
-
-            </LinearLayout>
 
             <!-- footer sign-in -->
             <LinearLayout

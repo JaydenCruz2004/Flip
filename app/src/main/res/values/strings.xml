@@ -14,4 +14,5 @@
     <string name="leaderboard">Leaderboard</string>
     <string name="invites_amp_new_friends"><![CDATA[Invites & New Friends]]></string>
     <string name="available_group_study_times">Available Group Study Times</string>
+    <string name="username">Username</string>
 </resources>

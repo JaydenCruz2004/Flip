@@ -1,7 +1,10 @@
 package com.example.flip.model;
 
-public class User {
+import java.io.Serializable;
 
+public class User implements Serializable {
+
+    private static final long serialVersionUID = 1L;
     public static final String E_KEY = "EMAILV";
     public static final String P_KEY = "PASSWORDV";
 
@@ -81,5 +84,9 @@ public class User {
     }
     public void setGamesPlayed(int gamesPlayed) {
         this.gamesPlayed = gamesPlayed;
+    }
+
+    public void addPoints(int additionalPoints) {
+        this.points += additionalPoints;
     }
 }

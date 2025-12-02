@@ -1,5 +1,6 @@
 package com.example.flip;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -19,6 +20,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TypeRaceActivity extends AppCompatActivity {
+
+    private com.example.flip.model.User currentUser;
 
     private TextView questionText, questionNumberText, scoreText, feedbackText, timerText;
     private EditText answerInput;
@@ -42,6 +45,8 @@ public class TypeRaceActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_type_race);
+
+        currentUser = (com.example.flip.model.User) getIntent().getSerializableExtra("USER");
 
         // Get quiz type from intent
         quizType = getIntent().getStringExtra("QUIZ_TYPE");
@@ -287,6 +292,13 @@ public class TypeRaceActivity extends AppCompatActivity {
         feedbackText.setText(String.format("Final Score: %d / %d\n(%.1f%%)\n\nTap anywhere to return",
                 totalScore, maxPossibleScore, percentage));
         feedbackText.setTextColor(Color.parseColor("#D594F2"));
+
+        if(currentUser != null) {
+            currentUser.addPoints(totalScore);
+            Intent result = new Intent();
+            result.putExtra("UPDATED_USER", currentUser);
+            setResult(RESULT_OK, result);
+        }
 
         findViewById(android.R.id.content).setOnClickListener(v -> finish());
     }

@@ -16,10 +16,12 @@ public class TypeRaceMenuActivity extends AppCompatActivity {
         Button mathButton = findViewById(R.id.mathQuizButton);
         Button geographyButton = findViewById(R.id.geographyQuizButton);
         Button scienceButton = findViewById(R.id.scienceQuizButton);
+        Button backButton = findViewById(R.id.backButton);
 
         mathButton.setOnClickListener(v -> startQuiz("MATH"));
         geographyButton.setOnClickListener(v -> startQuiz("GEOGRAPHY"));
         scienceButton.setOnClickListener(v -> startQuiz("SCIENCE"));
+        backButton.setOnClickListener(v -> finish());
     }
 
     private void startQuiz(String quizType) {

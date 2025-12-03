@@ -12,7 +12,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="⚡ Type Race"
+        android:text="@string/type_race"
         android:textSize="36sp"
         android:textStyle="bold"
         android:textColor="@color/flip_accent"
@@ -21,7 +21,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Type fast, score big!"
+        android:text="@string/type_fast_score_big"
         android:textSize="16sp"
         android:textColor="@color/flip_mid"
         android:layout_marginBottom="48dp"/>
@@ -39,7 +39,7 @@
             android:id="@+id/mathQuizButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="🔢 Math Quiz\n10 Quick Calculations"
+            android:text="@string/math_quiz_n10_quick_calculations"
             android:textSize="20sp"
             android:textStyle="bold"
             android:textColor="@color/flip_tint_light"
@@ -60,7 +60,7 @@
             android:id="@+id/geographyQuizButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="🌍 Geography Quiz\nCapitals and Landmarks"
+            android:text="@string/geography_quiz_ncapitals_and_landmarks"
             android:textSize="20sp"
             android:textStyle="bold"
             android:textColor="@color/flip_tint_light"
@@ -81,7 +81,7 @@
             android:id="@+id/scienceQuizButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="🔬 Science Quiz\nChemistry and Physics"
+            android:text="@string/science_quiz_nchemistry_and_physics"
             android:textSize="20sp"
             android:textStyle="bold"
             android:textColor="@color/flip_tint_light"
@@ -94,10 +94,21 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="💡 Tip: Answer quickly for maximum points!\n⏱️ You have 15 seconds per question"
+        android:text="@string/tip_answer_quickly_for_maximum_points_n_you_have_15_seconds_per_question"
         android:textSize="14sp"
         android:textColor="@color/flip_mid"
         android:gravity="center"
         android:layout_marginTop="24dp"/>
+
+    <Button
+        android:id="@+id/backButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="@color/flip_primary"
+        android:padding="16dp"
+        android:text="@string/back_to_games"
+        android:textColor="@color/flip_tint_light"
+        android:textSize="16sp" />
 
 </LinearLayout>

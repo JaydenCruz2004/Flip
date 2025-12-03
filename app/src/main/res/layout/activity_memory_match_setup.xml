@@ -17,7 +17,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="🎴 Memory Match"
+            android:text="@string/memory_match"
             android:textSize="32sp"
             android:textStyle="bold"
             android:textColor="@color/flip_accent"/>
@@ -26,7 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:text="Create your term-definition pairs"
+            android:text="@string/create_your_term_definition_pairs"
             android:textSize="16sp"
             android:textColor="@color/flip_mid"/>
     </LinearLayout>
@@ -55,7 +55,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="16dp"
-                    android:text="💡 Enter 4-8 pairs. Each pair has a term and its definition. The game will shuffle and hide them for you to match!"
+                    android:text="@string/enter_4_8_pairs_each_pair_has_a_term_and_its_definition_the_game_will_shuffle_and_hide_them_for_you_to_match"
                     android:textSize="14sp"
                     android:textColor="@color/flip_tint_light"
                     android:lineSpacingExtra="4dp"/>
@@ -72,7 +72,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="➕ Add Another Pair"
+                android:text="@string/add_another_pair"
                 android:textSize="16sp"
                 android:textColor="@color/flip_tint_light"
                 android:background="@color/flip_bg_mid"
@@ -88,11 +88,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:text="Start Game"
+        android:text="@string/start_game"
         android:textSize="18sp"
         android:textStyle="bold"
         android:textColor="@color/flip_tint_light"
         android:background="@color/flip_primary"
+        android:padding="16dp"/>
+    <Button
+        android:id="@+id/backButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/back_to_games"
+        android:textSize="16sp"
+        android:textColor="@color/flip_tint_light"
+        android:background="@color/flip_primary"
+        android:layout_marginTop="24dp"
         android:padding="16dp"/>
 
 </LinearLayout>

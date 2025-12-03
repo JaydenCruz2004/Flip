@@ -32,4 +32,15 @@
     <string name="d_option_d">d. Option D</string>
     <string name="submit_answer">Submit Answer</string>
     <string name="next_question">Next Question</string>
+    <string name="tip_answer_quickly_for_maximum_points_n_you_have_15_seconds_per_question">💡 Tip: Answer quickly for maximum points!\n⏱️ You have 15 seconds per question</string>
+    <string name="science_quiz_nchemistry_and_physics">🔬 Science Quiz\nChemistry and Physics</string>
+    <string name="geography_quiz_ncapitals_and_landmarks">🌍 Geography Quiz\nCapitals and Landmarks</string>
+    <string name="math_quiz_n10_quick_calculations">🔢 Math Quiz\n10 Quick Calculations</string>
+    <string name="type_fast_score_big">Type fast, score big!</string>
+    <string name="type_race">⚡ Type Race</string>
+    <string name="memory_match">🎴 Memory Match</string>
+    <string name="create_your_term_definition_pairs">Create your term-definition pairs</string>
+    <string name="enter_4_8_pairs_each_pair_has_a_term_and_its_definition_the_game_will_shuffle_and_hide_them_for_you_to_match">💡 Enter 4-8 pairs. Each pair has a term and its definition. The game will shuffle and hide them for you to match!</string>
+    <string name="add_another_pair">➕ Add Another Pair</string>
+    <string name="start_game">Start Game</string>
 </resources>

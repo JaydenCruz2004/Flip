@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class MemoryMatchSetupActivity extends AppCompatActivity {
 
     private LinearLayout pairsContainer;
-    private Button addPairButton, startGameButton;
+    private Button addPairButton, startGameButton, backButton;
     private ArrayList<String> terms = new ArrayList<>();
     private ArrayList<String> definitions = new ArrayList<>();
 
@@ -30,6 +30,10 @@ public class MemoryMatchSetupActivity extends AppCompatActivity {
         pairsContainer = findViewById(R.id.pairsContainer);
         addPairButton = findViewById(R.id.addPairButton);
         startGameButton = findViewById(R.id.startGameButton);
+        backButton = findViewById(R.id.backButton);
+
+        backButton.setOnClickListener(v -> finish());
+
 
         for (int i = 0; i < 4; i++) {
             addPairInputFields();

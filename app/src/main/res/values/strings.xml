@@ -1,4 +1,7 @@
 <resources>
+    <string name="api_key">ENTER_API_KEY_HERE</string>
+
+
     <string name="app_name">Flip</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
@@ -15,4 +18,18 @@
     <string name="invites_amp_new_friends"><![CDATA[Invites & New Friends]]></string>
     <string name="available_group_study_times">Available Group Study Times</string>
     <string name="username">Username</string>
+    <string name="back_to_games">Back to Games</string>
+    <string name="generate_quiz">Generate Quiz</string>
+    <string name="enter_your_notes_here">Enter your notes here</string>
+    <string name="paste_your_notes_below">Paste your notes below</string>
+    <string name="quiz_generator">Quiz Generator</string>
+    <string name="score_0_5">Score: 0/5</string>
+    <string name="question_1_5">Question 1/5</string>
+    <string name="question_will_appear_here">Question will appear here</string>
+    <string name="a_option_a">a. Option A</string>
+    <string name="b_option_b">b. Option B</string>
+    <string name="c_option_c">c. Option C</string>
+    <string name="d_option_d">d. Option D</string>
+    <string name="submit_answer">Submit Answer</string>
+    <string name="next_question">Next Question</string>
 </resources>

@@ -34,7 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:text="FLIP"
+            android:text="@string/flip"
             android:textStyle="bold"
             android:textSize="22sp"
             android:textColor="@color/flip_light" />
@@ -45,7 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginStart="10dp"
-            android:text="Elevate Your Study Game"
+            android:text="@string/elevate_your_study_game"
             android:textSize="12sp"
             android:textColor="@color/flip_mid" />
     </LinearLayout>
@@ -74,7 +74,7 @@
                 android:id="@+id/title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Create Account"
+                android:text="@string/create_account"
                 android:textColor="@color/flip_ink"
                 android:textStyle="bold"
                 android:textSize="22sp" />
@@ -84,7 +84,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:text="Start your learning journey 🚀"
+                android:text="@string/start_your_learning_journey"
                 android:textColor="@color/flip_ink_soft"
                 android:textSize="14sp" />
 
@@ -109,7 +109,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPersonName"
-                    android:hint="Full Name"
+                    android:hint="@string/full_name"
                     android:textColor="@color/flip_ink"
                     android:textColorHint="@color/flip_ink_soft"/>
             </com.google.android.material.textfield.TextInputLayout>
@@ -161,7 +161,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textEmailAddress"
-                    android:hint="Email"
+                    android:hint="@string/email"
                     android:textColor="@color/flip_ink"
                     android:textColorHint="@color/flip_ink_soft"/>
             </com.google.android.material.textfield.TextInputLayout>
@@ -189,7 +189,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
-                    android:hint="Password"
+                    android:hint="@string/password"
                     android:textColor="@color/flip_ink"
                     android:textColorHint="@color/flip_ink_soft"/>
             </com.google.android.material.textfield.TextInputLayout>
@@ -217,7 +217,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
-                    android:hint="Confirm Password"
+                    android:hint="@string/confirm_password"
                     android:textColor="@color/flip_ink"
                     android:textColorHint="@color/flip_ink_soft"/>
             </com.google.android.material.textfield.TextInputLayout>
@@ -231,7 +231,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Create Account"
+                android:text="@string/create_account"
                 android:textAllCaps="false"
                 android:textSize="18sp"
                 android:textStyle="bold"
@@ -257,7 +257,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Already have an account?"
+                    android:text="@string/already_have_an_account"
                     android:textColor="@color/flip_ink_soft"/>
 
                 <TextView
@@ -265,7 +265,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:text="Sign in"
+                    android:text="@string/sign_in"
                     android:textStyle="bold"
                     android:textColor="@color/flip_primary"/>
             </LinearLayout>

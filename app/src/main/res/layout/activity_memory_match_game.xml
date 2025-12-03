@@ -19,7 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="00:00"
+            android:text="@string/_00_00"
             android:textSize="36sp"
             android:textStyle="bold"
             android:textColor="@color/flip_accent"
@@ -37,7 +37,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Moves: 0"
+                android:text="@string/moves_0"
                 android:textSize="18sp"
                 android:textColor="@color/flip_tint_light"
                 android:gravity="center"/>
@@ -47,7 +47,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Pairs: 0/4"
+                android:text="@string/pairs_0_4"
                 android:textSize="18sp"
                 android:textColor="@color/flip_tint_light"
                 android:gravity="center"/>

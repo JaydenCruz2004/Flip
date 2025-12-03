@@ -121,6 +121,16 @@
             android:background="@color/flip_primary"
             android:padding="16dp"
             android:visibility="gone"/>
+        <Button
+            android:id="@+id/backButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/generate_new_quiz"
+            android:textSize="16sp"
+            android:textColor="@color/flip_tint_light"
+            android:background="@color/flip_primary"
+            android:layout_marginTop="24dp"
+            android:padding="16dp"/>
 
     </LinearLayout>
 

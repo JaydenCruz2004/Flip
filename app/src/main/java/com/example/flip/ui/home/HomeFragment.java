@@ -11,8 +11,15 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.example.flip.MainActivity;
 import com.example.flip.R;
 import com.example.flip.model.User;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class HomeFragment extends Fragment {
 
@@ -20,10 +27,17 @@ public class HomeFragment extends Fragment {
     private ImageView profileImage;
     private LinearLayout leaderboardContainer, activityContainer, scheduleContainer;
 
+    private FirebaseAuth auth;
+    private FirebaseDatabase database;
+    private User currentUser;
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_home, container, false);
+
+        auth = FirebaseAuth.getInstance();
+        database = FirebaseDatabase.getInstance();
 
         // Initialize views
         profileImage = root.findViewById(R.id.profileImage);
@@ -49,7 +63,47 @@ public class HomeFragment extends Fragment {
     }
 
     private void loadProfileData() {
-        // Mock data - later you'll load this from Firebase
+        // Try to get user from MainActivity first
+        if (getActivity() instanceof MainActivity) {
+            MainActivity mainActivity = (MainActivity) getActivity();
+            currentUser = mainActivity.getCurrentUser();
+
+            if (currentUser != null) {
+                displayUserData();
+                return;
+            }
+        }
+
+        // If not available, load from Firebase
+        String uid = auth.getCurrentUser() != null ? auth.getCurrentUser().getUid() : null;
+
+        if (uid != null) {
+            DatabaseReference userRef = database.getReference("users").child(uid);
+            userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    if (snapshot.exists()) {
+                        currentUser = snapshot.getValue(User.class);
+                        displayUserData();
+                    } else {
+                        // If user doesn't exist in database, use mock data
+                        displayMockData();
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    // On error, display mock data
+                    displayMockData();
+                }
+            });
+        } else {
+            // No user logged in, use mock data
+            displayMockData();
+        }
+    }
+
+    private void displayMockData() {
         User user = new User();
         user.setUsername("Loganwins");
         user.setStreak(36);
@@ -62,6 +116,22 @@ public class HomeFragment extends Fragment {
         rankingValue.setText(getOrdinal(user.getRanking()));
         pointsValue.setText(String.valueOf(user.getPoints()));
         gamesValue.setText(String.valueOf(user.getGamesPlayed()));
+    }
+
+    private void displayUserData() {
+        if(currentUser != null) {
+            String username = currentUser.getUsername();
+            if (username != null && !username.isEmpty()) {
+                usernameText.setText("@" + username);
+            } else {
+                usernameText.setText("@User");
+            }
+
+            streakBadge.setText("🔥 " + currentUser.getStreak() + " Day Streak");
+            rankingValue.setText(getOrdinal(currentUser.getRanking()));
+            pointsValue.setText(String.valueOf(currentUser.getPoints()));
+            gamesValue.setText(String.valueOf(currentUser.getGamesPlayed()));
+        }
     }
 
     private void populateLeaderboard() {
@@ -119,6 +189,7 @@ public class HomeFragment extends Fragment {
 //    }
 
     private String getOrdinal(int number) {
+        if (number == 0) return "N/A";
         String[] suffixes = {"TH", "ST", "ND", "RD", "TH", "TH", "TH", "TH", "TH", "TH"};
 
         switch (number % 100) {

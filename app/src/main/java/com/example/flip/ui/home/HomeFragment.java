@@ -22,6 +22,13 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.NumberFormat;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Locale;
+
 public class HomeFragment extends Fragment {
 
     private TextView usernameText, streakBadge, rankingValue, pointsValue, gamesValue;
@@ -52,72 +59,106 @@ public class HomeFragment extends Fragment {
         activityContainer = root.findViewById(R.id.activityContainer);
         scheduleContainer = root.findViewById(R.id.scheduleContainer);
 
-        // Load profile data (for now, using mock data)
+        // Load profile data
         loadProfileData();
 
         // Populate sections
         populateLeaderboard();
-//        populateRecentActivity();
-//        populateSchedule();
 
         return root;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        // Refresh data when fragment becomes visible
+        loadProfileData();
+        populateLeaderboard();
+    }
+
     private void loadProfileData() {
-        // Try to get user from MainActivity first
-        if (getActivity() instanceof MainActivity) {
-            MainActivity mainActivity = (MainActivity) getActivity();
-            currentUser = mainActivity.getCurrentUser();
-
-            if (currentUser != null) {
-                displayUserData();
-                return;
-            }
-        }
-
-        // If not available, load from Firebase
         String uid = auth.getCurrentUser() != null ? auth.getCurrentUser().getUid() : null;
 
         if (uid != null) {
             DatabaseReference userRef = database.getReference("users").child(uid);
-            userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            userRef.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     if (snapshot.exists()) {
                         currentUser = snapshot.getValue(User.class);
+                        if (currentUser != null) {
+                            currentUser.setUid(uid);
+                            // Calculate ranking among all users
+                            calculateUserRanking(uid);
+                        }
                         displayUserData();
                     } else {
-                        Toast.makeText(getContext(), "User data not found. Using mock data.", Toast.LENGTH_SHORT).show();
-                        // If user doesn't exist in database, use mock data
-                        displayMockData();
+                        // If user doesn't exist in database, use default values
+                        displayDefaultData();
                     }
                 }
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-                    // On error, display mock data
-                    displayMockData();
+                    // On error, display default data
+                    displayDefaultData();
                 }
             });
         } else {
-            // No user logged in, use mock data
-            displayMockData();
+            // No user logged in, use default data
+            displayDefaultData();
         }
     }
 
-    private void displayMockData() {
-        User user = new User();
-        user.setUsername("Loganwins");
-        user.setStreak(36);
-        user.setRanking(5);
-        user.setPoints(987);
-        user.setGamesPlayed(105);
+    private void calculateUserRanking(String userId) {
+        DatabaseReference usersRef = database.getReference("users");
+        usersRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                List<User> allUsers = new ArrayList<>();
 
-        usernameText.setText("@" + user.getUsername());
-        streakBadge.setText("🔥 " + user.getStreak() + " Day Streak");
-        rankingValue.setText(getOrdinal(user.getRanking()));
-        pointsValue.setText(String.valueOf(user.getPoints()));
-        gamesValue.setText(String.valueOf(user.getGamesPlayed()));
+                for (DataSnapshot userSnapshot : snapshot.getChildren()) {
+                    User user = userSnapshot.getValue(User.class);
+                    if (user != null && (user.getPoints() > 0 || user.getGamesPlayed() > 0)) {
+                        user.setUid(userSnapshot.getKey());
+                        allUsers.add(user);
+                    }
+                }
+
+                // Sort by points
+                Collections.sort(allUsers, new Comparator<User>() {
+                    @Override
+                    public int compare(User u1, User u2) {
+                        return Integer.compare(u2.getPoints(), u1.getPoints());
+                    }
+                });
+
+                // Find current user's rank
+                for (int i = 0; i < allUsers.size(); i++) {
+                    if (allUsers.get(i).getUid() != null &&
+                            allUsers.get(i).getUid().equals(userId)) {
+                        if (currentUser != null) {
+                            currentUser.setRanking(i + 1);
+                            displayUserData();
+                        }
+                        break;
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                // Ignore ranking calculation errors
+            }
+        });
+    }
+
+    private void displayDefaultData() {
+        usernameText.setText("@User");
+        streakBadge.setText("🔥 0 Day Streak");
+        rankingValue.setText("N/A");
+        pointsValue.setText("0");
+        gamesValue.setText("0");
     }
 
     private void displayUserData() {
@@ -131,64 +172,118 @@ public class HomeFragment extends Fragment {
 
             streakBadge.setText("🔥 " + currentUser.getStreak() + " Day Streak");
             rankingValue.setText(getOrdinal(currentUser.getRanking()));
-            pointsValue.setText(String.valueOf(currentUser.getPoints()));
+
+            // Format points with commas
+            NumberFormat numberFormat = NumberFormat.getNumberInstance(Locale.US);
+            pointsValue.setText(numberFormat.format(currentUser.getPoints()));
+
             gamesValue.setText(String.valueOf(currentUser.getGamesPlayed()));
         }
     }
 
     private void populateLeaderboard() {
-        // Mock leaderboard data
-        addLeaderboardItem("TaliaShaw", 1436, 1);
-        addLeaderboardItem("kysonbrown", 1592, 2);
-        addLeaderboardItem("jo8945", 1034, 3);
+        // Clear existing leaderboard items
+        leaderboardContainer.removeAllViews();
+
+        // Load top 3 users from Firebase
+        DatabaseReference usersRef = database.getReference("users");
+        usersRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                List<User> allUsers = new ArrayList<>();
+
+                for (DataSnapshot userSnapshot : snapshot.getChildren()) {
+                    User user = userSnapshot.getValue(User.class);
+                    if (user != null) {
+                        user.setUid(userSnapshot.getKey());
+
+                        // Only include users with points > 0
+                        if (user.getPoints() > 0 || user.getGamesPlayed() > 0) {
+                            allUsers.add(user);
+                        }
+                    }
+                }
+
+                // Sort by points (highest first)
+                Collections.sort(allUsers, new Comparator<User>() {
+                    @Override
+                    public int compare(User u1, User u2) {
+                        return Integer.compare(u2.getPoints(), u1.getPoints());
+                    }
+                });
+
+                // Display top 3
+                int limit = Math.min(3, allUsers.size());
+                for (int i = 0; i < limit; i++) {
+                    User user = allUsers.get(i);
+                    addLeaderboardItem(user, i + 1);
+                }
+
+                // If no users, show placeholder
+                if (allUsers.isEmpty()) {
+                    addEmptyLeaderboardMessage();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(getContext(),
+                        "Failed to load leaderboard",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
-    private void addLeaderboardItem(String username, int points, int position) {
-        //View itemView = LayoutInflater.from(getContext())
-          //      .inflate(R.layout.item_leaderboard, leaderboardContainer, false);
+    private void addLeaderboardItem(User user, int position) {
+        View itemView = LayoutInflater.from(getContext())
+                .inflate(R.layout.item_leaderboard_mini, leaderboardContainer, false);
 
-        // Set up the leaderboard item views here
-        // TextView usernameTV = itemView.findViewById(R.id.leaderboardUsername);
-        // TextView pointsTV = itemView.findViewById(R.id.leaderboardPoints);
-        // usernameTV.setText("@" + username);
-        // pointsTV.setText(points + " pts");
+        TextView rankBadge = itemView.findViewById(R.id.rankBadgeMini);
+        TextView usernameTV = itemView.findViewById(R.id.usernameMini);
+        TextView pointsTV = itemView.findViewById(R.id.pointsMini);
+        ImageView trophyIcon = itemView.findViewById(R.id.trophyIconMini);
 
-        //leaderboardContainer.addView(itemView);
+        // Set rank
+        rankBadge.setText(String.valueOf(position));
+
+        // Set username
+        String username = user.getUsername();
+        if (username == null || username.isEmpty()) {
+            username = user.getEmail() != null ? user.getEmail().split("@")[0] : "User";
+        }
+        usernameTV.setText("@" + username);
+
+        // Set points with formatting
+        NumberFormat numberFormat = NumberFormat.getNumberInstance(Locale.US);
+        pointsTV.setText(numberFormat.format(user.getPoints()) + " pts");
+
+        // Show trophy for top 3 with different colors
+        trophyIcon.setVisibility(View.VISIBLE);
+        switch (position) {
+            case 1:
+                trophyIcon.setColorFilter(0xFFFFD700); // Gold
+                break;
+            case 2:
+                trophyIcon.setColorFilter(0xFFC0C0C0); // Silver
+                break;
+            case 3:
+                trophyIcon.setColorFilter(0xFFCD7F32); // Bronze
+                break;
+        }
+
+        leaderboardContainer.addView(itemView);
     }
 
-//    private void populateRecentActivity() {
-//        // Mock activity data
-//        addActivityItem("KayBear35", "invited you to play InfoSystems Ch3", "30m");
-//        addActivityItem("Micah25", "Requested to follow you", "2hr");
-//        addActivityItem("Sam_Jones", "Requested to follow you", "1D");
-//    }
+    private void addEmptyLeaderboardMessage() {
+        TextView emptyMessage = new TextView(getContext());
+        emptyMessage.setText("No players yet. Be the first!");
+        emptyMessage.setTextColor(getResources().getColor(R.color.flip_mid));
+        emptyMessage.setTextSize(14);
+        emptyMessage.setPadding(16, 16, 16, 16);
+        emptyMessage.setGravity(android.view.Gravity.CENTER);
 
-//    private void addActivityItem(String username, String action, String time) {
-//        View itemView = LayoutInflater.from(getContext())
-//                .inflate(R.layout.item_activity, activityContainer, false);
-//
-//        // Set up the activity item views here
-//
-//        activityContainer.addView(itemView);
-//    }
-
-//    private void populateSchedule() {
-//        // Mock schedule data
-//        String[] times = {"9:00", "10:00", "11:00", "12:00", "1:00", "2:00", "3:00", "4:00"};
-//
-//        for (String time : times) {
-//            addScheduleItem(time);
-//        }
-//    }
-
-//    private void addScheduleItem(String time) {
-//        View itemView = LayoutInflater.from(getContext())
-//                .inflate(R.layout.item_schedule, scheduleContainer, false);
-//
-//        // Set up the schedule item views here
-//
-//        scheduleContainer.addView(itemView);
-//    }
+        leaderboardContainer.addView(emptyMessage);
+    }
 
     private String getOrdinal(int number) {
         if (number == 0) return "N/A";

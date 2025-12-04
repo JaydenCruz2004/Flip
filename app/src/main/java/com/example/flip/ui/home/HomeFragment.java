@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -86,6 +87,7 @@ public class HomeFragment extends Fragment {
                         currentUser = snapshot.getValue(User.class);
                         displayUserData();
                     } else {
+                        Toast.makeText(getContext(), "User data not found. Using mock data.", Toast.LENGTH_SHORT).show();
                         // If user doesn't exist in database, use mock data
                         displayMockData();
                     }

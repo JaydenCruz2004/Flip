@@ -14,10 +14,20 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class TypeRaceActivity extends AppCompatActivity {
 
@@ -40,6 +50,10 @@ public class TypeRaceActivity extends AppCompatActivity {
 
     private Handler timerHandler = new Handler();
     private Runnable timerRunnable;
+
+    private FirebaseAuth auth;
+    private FirebaseDatabase db;
+    private String uid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -293,14 +307,77 @@ public class TypeRaceActivity extends AppCompatActivity {
                 totalScore, maxPossibleScore, percentage));
         feedbackText.setTextColor(Color.parseColor("#D594F2"));
 
-        if(currentUser != null) {
-            currentUser.addPoints(totalScore);
-            Intent result = new Intent();
-            result.putExtra("UPDATED_USER", currentUser);
-            setResult(RESULT_OK, result);
+        updateUserScoreInFirebase();
+        findViewById(android.R.id.content).setOnClickListener(v -> finish());
+    }
+
+    private void updateUserScoreInFirebase() {
+        if (uid == null) {
+            Toast.makeText(this, "Error: User not logged in", Toast.LENGTH_SHORT).show();
+            finishActivity();
+            return;
         }
 
-        findViewById(android.R.id.content).setOnClickListener(v -> finish());
+        DatabaseReference userRef = db.getReference("users").child(uid);
+
+        // First, get the current user data
+        userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    // Get current values
+                    Integer currentPoints = snapshot.child("points").getValue(Integer.class);
+                    Integer currentGames = snapshot.child("gamesPlayed").getValue(Integer.class);
+
+                    int newPoints = (currentPoints != null ? currentPoints : 0) + totalScore;
+                    int newGames = (currentGames != null ? currentGames : 0) + 1;
+
+                    // Update only the specific fields
+                    Map<String, Object> updates = new HashMap<>();
+                    updates.put("points", newPoints);
+                    updates.put("gamesPlayed", newGames);
+
+                    userRef.updateChildren(updates).addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            feedbackText.setText(String.format("Final Score: %d\n\n✓ Saved to profile!\n\nTotal Points: %d\nGames Played: %d\n\nTap anywhere to return",
+                                    totalScore, newPoints, newGames));
+
+                            Toast.makeText(TypeRaceActivity.this,
+                                    "Score saved! +" + totalScore + " points",
+                                    Toast.LENGTH_LONG).show();
+                        } else {
+                            feedbackText.setText(String.format("Final Score: %d\n\n✗ Error saving score\n\nTap anywhere to return",
+                                    totalScore));
+                            Toast.makeText(TypeRaceActivity.this,
+                                    "Error saving score",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+
+                        // Allow user to tap to exit
+                        findViewById(android.R.id.content).setOnClickListener(v -> finish());
+                    });
+                } else {
+                    Toast.makeText(TypeRaceActivity.this,
+                            "User profile not found",
+                            Toast.LENGTH_SHORT).show();
+                    finishActivity();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(TypeRaceActivity.this,
+                        "Database error: " + error.getMessage(),
+                        Toast.LENGTH_SHORT).show();
+                finishActivity();
+            }
+        });
+    }
+
+    private void finishActivity() {
+        new Handler().postDelayed(() -> {
+            findViewById(android.R.id.content).setOnClickListener(v -> finish());
+        }, 2000);
     }
 
     @Override

@@ -18,7 +18,7 @@
 
     <item
         android:id="@+id/navigation_leaderboard"
-        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:icon="@drawable/baseline_leaderboard_24"
         android:title="@string/title_leaderboard" />
 
     <item

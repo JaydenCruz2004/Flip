@@ -195,7 +195,7 @@
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:layout_alignParentEnd="true"
-                        android:src="@drawable/ic_dashboard_black_24dp"
+                        android:src="@drawable/baseline_leaderboard_24"
                         app:tint="@color/flip_accent"/>
                 </RelativeLayout>
 

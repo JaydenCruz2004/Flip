@@ -334,7 +334,7 @@ public class TypeRaceActivity extends AppCompatActivity {
                     Integer currentPoints = snapshot.child("points").getValue(Integer.class);
                     Integer currentGames = snapshot.child("gamesPlayed").getValue(Integer.class);
 
-                    int newPoints = (currentPoints != null ? currentPoints : 0) + totalScore;
+                    int newPoints = (currentPoints != null ? currentPoints : 0) + (totalScore / 100);
                     int newGames = (currentGames != null ? currentGames : 0) + 1;
 
                     // Update only the specific fields
@@ -348,11 +348,11 @@ public class TypeRaceActivity extends AppCompatActivity {
                                     totalScore, newPoints, newGames));
 
                             Toast.makeText(TypeRaceActivity.this,
-                                    "Score saved! +" + totalScore + " points",
+                                    "Score saved! +" + (totalScore / 100) + " points",
                                     Toast.LENGTH_LONG).show();
                         } else {
                             feedbackText.setText(String.format("Final Score: %d\n\n✗ Error saving score\n\nTap anywhere to return",
-                                    totalScore));
+                                    (totalScore / 100)));
                             Toast.makeText(TypeRaceActivity.this,
                                     "Error saving score",
                                     Toast.LENGTH_SHORT).show();

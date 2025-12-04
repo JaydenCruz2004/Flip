@@ -1,5 +1,9 @@
 package com.example.flip.model;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.io.Serializable;
 
 public class User implements Serializable {
@@ -59,6 +63,8 @@ public class User implements Serializable {
     public String getProfileImageUrl() {
         return profileImageUrl;
     }
+
+
     public void setProfileImageUrl(String profileImageUrl) {
         this.profileImageUrl = profileImageUrl;
     }
@@ -86,8 +92,33 @@ public class User implements Serializable {
     public void setGamesPlayed(int gamesPlayed) {
         this.gamesPlayed = gamesPlayed;
     }
+    public String getUid() {
+        return uid;
+    }
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
+
 
     public void addPoints(int additionalPoints) {
         this.points += additionalPoints;
+        savePointsToFirebase();
+    }
+
+    private void savePointsToFirebase() {
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        if(auth.getCurrentUser() != null)
+        {
+            String userId = auth.getCurrentUser().getUid();
+            DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("users").child(userId);
+
+            userRef.child("points").setValue(points);
+            userRef.child("gamesPlayed").setValue(gamesPlayed);
+        }
+    }
+
+    public void incrementGamesPlayed() {
+        this.gamesPlayed++;
+        savePointsToFirebase();
     }
 }

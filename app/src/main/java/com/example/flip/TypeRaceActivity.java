@@ -60,6 +60,11 @@ public class TypeRaceActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_type_race);
 
+        // Initialize Firebase
+        auth = FirebaseAuth.getInstance();
+        db = FirebaseDatabase.getInstance();
+        uid = auth.getCurrentUser() != null ? auth.getCurrentUser().getUid() : null;
+
         currentUser = (com.example.flip.model.User) getIntent().getSerializableExtra("USER");
 
         // Get quiz type from intent

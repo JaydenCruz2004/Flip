@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="2dp"
+    app:cardBackgroundColor="@color/flip_bg_dark">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:gravity="center_vertical">
+
+        <!-- Icon/Image Placeholder -->
+        <ImageView
+            android:id="@+id/activityIcon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_dashboard_black_24dp"
+            android:background="@drawable/bg_social_circle"
+            android:padding="8dp"
+            app:tint="@color/flip_accent"
+            android:layout_marginEnd="12dp"/>
+
+        <!-- Activity Info -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/activityTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Info Systems"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/flip_tint_light"/>
+
+            <TextView
+                android:id="@+id/activitySubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ch 30"
+                android:textSize="12sp"
+                android:textColor="@color/flip_mid"
+                android:layout_marginTop="2dp"/>
+        </LinearLayout>
+
+        <!-- Due Date / Status -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="end">
+
+            <TextView
+                android:id="@+id/activityDue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Due in 6 Days"
+                android:textSize="12sp"
+                android:textColor="@color/flip_mid"
+                android:layout_marginBottom="4dp"/>
+
+            <TextView
+                android:id="@+id/activityProgress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="70%"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/flip_accent"
+                android:background="@drawable/bg_social_circle"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="4dp"/>
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
+
+

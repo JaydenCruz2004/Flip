@@ -38,6 +38,7 @@
                         android:layout_height="80dp"
                         android:layout_alignParentStart="true"
                         android:background="@drawable/bg_social_circle"
+                        android:contentDescription="@string/profilepicture"
                         android:src="@drawable/ic_user"
                         app:tint="@color/flip_accent"
                         android:padding="8dp"/>
@@ -80,6 +81,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
+                    android:baselineAligned="false"
                     android:orientation="horizontal"
                     android:weightSum="3">
 
@@ -95,7 +97,7 @@
                             android:id="@+id/rankingValue"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="5TH"
+                            android:text="@string/_5th"
                             android:textColor="@color/flip_tint_light"
                             android:textSize="24sp"
                             android:textStyle="bold"/>
@@ -103,7 +105,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Ranking"
+                            android:text="@string/ranking"
                             android:textColor="@color/flip_mid"
                             android:textSize="12sp"/>
                     </LinearLayout>
@@ -120,7 +122,7 @@
                             android:id="@+id/pointsValue"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="987"
+                            android:text="@string/_67"
                             android:textColor="@color/flip_tint_light"
                             android:textSize="24sp"
                             android:textStyle="bold"/>
@@ -128,7 +130,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Points"
+                            android:text="@string/points"
                             android:textColor="@color/flip_mid"
                             android:textSize="12sp"/>
                     </LinearLayout>
@@ -145,7 +147,7 @@
                             android:id="@+id/gamesValue"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="105"
+                            android:text="@string/_41"
                             android:textColor="@color/flip_tint_light"
                             android:textSize="24sp"
                             android:textStyle="bold"/>
@@ -153,7 +155,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Games"
+                            android:text="@string/games"
                             android:textColor="@color/flip_mid"
                             android:textSize="12sp"/>
                     </LinearLayout>
@@ -195,6 +197,7 @@
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:layout_alignParentEnd="true"
+                        android:contentDescription="@string/leaderboard"
                         android:src="@drawable/baseline_leaderboard_24"
                         app:tint="@color/flip_accent"/>
                 </RelativeLayout>
@@ -235,7 +238,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
-                        android:text="Recent Activity"
+                        android:text="@string/recent_activity"
                         android:textColor="@color/flip_tint_light"
                         android:textSize="18sp"
                         android:textStyle="bold"/>
@@ -244,6 +247,7 @@
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:layout_alignParentEnd="true"
+                        android:contentDescription="@string/notifications"
                         android:src="@drawable/ic_notifications_black_24dp"
                         app:tint="@color/flip_accent"/>
                 </RelativeLayout>
@@ -292,7 +296,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
-                        android:text="Schedule"
+                        android:text="@string/schedule"
                         android:textColor="@color/flip_tint_light"
                         android:textSize="18sp"
                         android:textStyle="bold"/>
@@ -301,6 +305,7 @@
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:layout_alignParentEnd="true"
+                        android:contentDescription="Schedule"
                         android:src="@drawable/ic_dashboard_black_24dp"
                         app:tint="@color/flip_accent"/>
                 </RelativeLayout>

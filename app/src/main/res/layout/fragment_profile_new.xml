@@ -63,7 +63,7 @@
                         android:id="@+id/rankingText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="N/A"
+                        android:text="@string/n_a"
                         android:textColor="@color/flip_accent"
                         android:textSize="20sp"
                         android:textStyle="bold"/>
@@ -71,7 +71,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Ranking"
+                        android:text="@string/ranking"
                         android:textColor="@color/flip_mid"
                         android:textSize="12sp"/>
                 </LinearLayout>
@@ -87,7 +87,7 @@
                         android:id="@+id/pointsText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="0"
+                        android:text="@string/_0"
                         android:textColor="@color/flip_accent"
                         android:textSize="20sp"
                         android:textStyle="bold"/>
@@ -95,7 +95,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Points"
+                        android:text="@string/points"
                         android:textColor="@color/flip_mid"
                         android:textSize="12sp"/>
                 </LinearLayout>
@@ -111,7 +111,7 @@
                         android:id="@+id/gamesText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="0"
+                        android:text="@string/_0"
                         android:textColor="@color/flip_accent"
                         android:textSize="20sp"
                         android:textStyle="bold"/>
@@ -119,7 +119,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Games"
+                        android:text="@string/games"
                         android:textColor="@color/flip_mid"
                         android:textSize="12sp"/>
                 </LinearLayout>

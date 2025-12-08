@@ -45,7 +45,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="wants to be friends"
+            android:text="@string/wants_to_be_friends"
             android:textSize="14sp"
             android:textColor="@color/flip_tint_light"
             android:layout_marginBottom="12dp"/>
@@ -62,7 +62,7 @@
                 style="@style/Widget.Material3.Button.TextButton"
                 android:layout_width="wrap_content"
                 android:layout_height="36dp"
-                android:text="Decline"
+                android:text="@string/decline"
                 android:textSize="14sp"
                 android:textColor="@color/flip_mid"
                 android:insetTop="0dp"
@@ -73,7 +73,7 @@
                 android:id="@+id/acceptButton"
                 android:layout_width="wrap_content"
                 android:layout_height="36dp"
-                android:text="Accept"
+                android:text="@string/accept"
                 android:textSize="14sp"
                 android:textColor="@color/flip_tint_light"
                 android:backgroundTint="@color/flip_accent"

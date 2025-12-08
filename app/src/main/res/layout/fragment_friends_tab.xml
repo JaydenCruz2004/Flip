@@ -17,7 +17,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="No friends yet.\nAdd friends from the Add tab!"
+        android:text="@string/no_friends_yet_nadd_friends_from_the_add_tab"
         android:textAlignment="center"
         android:textColor="@color/flip_mid"
         android:textSize="16sp"

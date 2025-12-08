@@ -58,7 +58,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="Type a message..."
+            android:hint="@string/type_a_message"
             android:textColor="@color/flip_tint_light"
             android:textColorHint="@color/flip_mid"
             android:background="@color/flip_bg_dark"
@@ -71,6 +71,7 @@
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginStart="8dp"
+            android:contentDescription="@string/send"
             android:src="@drawable/baseline_send_24"
             android:background="@drawable/bg_social_circle"
             app:tint="@color/flip_accent"/>

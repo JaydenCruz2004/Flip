@@ -17,7 +17,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="No conversations yet.\nSend a message to a friend to start chatting!"
+        android:text="@string/no_conversations_yet_nsend_a_message_to_a_friend_to_start_chatting"
         android:textAlignment="center"
         android:textColor="@color/flip_mid"
         android:textSize="16sp"

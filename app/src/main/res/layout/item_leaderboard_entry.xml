@@ -21,7 +21,7 @@
             android:id="@+id/rankBadge"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:text="1"
+            android:text="@string/_1"
             android:textSize="18sp"
             android:textStyle="bold"
             android:textColor="@color/flip_accent"
@@ -60,7 +60,7 @@
                 android:id="@+id/gamesPlayedText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="105 games played"
+                android:text="@string/_105_games_played"
                 android:textSize="12sp"
                 android:textColor="@color/flip_mid"/>
         </LinearLayout>
@@ -76,7 +76,7 @@
                 android:id="@+id/pointsText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="9,876"
+                android:text="@string/_9_876"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:textColor="@color/flip_accent"/>
@@ -84,7 +84,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="points"
+                android:text="@string/points"
                 android:textSize="10sp"
                 android:textColor="@color/flip_mid"/>
         </LinearLayout>

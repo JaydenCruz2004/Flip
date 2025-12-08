@@ -19,7 +19,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Question 1/10"
+            android:text="@string/question_1_10"
             android:textSize="16sp"
             android:textColor="@color/flip_mid"/>
 
@@ -27,7 +27,7 @@
             android:id="@+id/scoreText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Score: 0"
+            android:text="@string/score_0"
             android:textSize="18sp"
             android:textStyle="bold"
             android:textColor="@color/flip_accent"/>
@@ -39,7 +39,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="0.0s"
+        android:text="@string/_0_0s"
         android:textSize="32sp"
         android:textStyle="bold"
         android:textColor="@color/flip_accent"
@@ -53,13 +53,13 @@
         app:cardCornerRadius="16dp"
         app:cardElevation="4dp"
         app:cardBackgroundColor="@color/flip_bg_mid"
-        xmlns:app="http://schemas.android.com/apk/res-auto">
+        >
 
         <TextView
             android:id="@+id/questionText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="What is the capital of France?"
+            android:text="@string/what_is_the_capital_of_france"
             android:textSize="22sp"
             android:textColor="@color/flip_tint_light"
             android:textStyle="bold"
@@ -84,7 +84,7 @@
             android:id="@+id/answerInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Type your answer..."
+            android:hint="@string/type_your_answer"
             android:textSize="18sp"
             android:textColor="@color/flip_tint_light"
             android:textColorHint="@color/flip_mid"
@@ -98,7 +98,7 @@
         android:id="@+id/submitButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Submit Answer"
+        android:text="@string/submit_answer"
         android:textSize="18sp"
         android:textStyle="bold"
         android:textColor="@color/flip_tint_light"
@@ -111,7 +111,7 @@
         android:id="@+id/feedbackText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="✓ CORRECT! +1000 pts"
+        android:text="@string/correct_1000_pts"
         android:textSize="24sp"
         android:textStyle="bold"
         android:textColor="@color/flip_accent"

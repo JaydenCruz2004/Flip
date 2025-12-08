@@ -8,7 +8,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Activity Name"
+        android:text="@string/activity_name"
         android:textSize="14sp"
         android:textColor="@color/flip_ink"
         android:layout_marginBottom="8dp"/>
@@ -17,7 +17,7 @@
         android:id="@+id/activityInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="e.g., Study for Math exam"
+        android:hint="@string/e_g_study_for_math_exam"
         android:textColor="@color/flip_ink"
         android:textColorHint="@color/flip_mid"
         android:background="@color/flip_fill"

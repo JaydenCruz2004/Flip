@@ -25,7 +25,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="🏆 Leaderboard"
+                android:text="@string/leaderboard"
                 android:textSize="28sp"
                 android:textStyle="bold"
                 android:textColor="@color/flip_tint_light"
@@ -35,7 +35,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:text="Your Ranking"
+                android:text="@string/your_ranking"
                 android:textSize="14sp"
                 android:textColor="@color/flip_mid"
                 android:layout_gravity="center"/>
@@ -83,7 +83,7 @@
                         android:id="@+id/currentUserGames"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="0 games played"
+                        android:text="@string/_0_games_played"
                         android:textSize="12sp"
                         android:textColor="@color/flip_mid"/>
                 </LinearLayout>
@@ -93,7 +93,7 @@
                     android:id="@+id/currentUserPoints"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="0"
+                    android:text="@string/_0"
                     android:textSize="24sp"
                     android:textStyle="bold"
                     android:textColor="@color/flip_accent"/>
@@ -102,7 +102,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
-                    android:text="pts"
+                    android:text="@string/pts"
                     android:textSize="12sp"
                     android:textColor="@color/flip_mid"/>
             </LinearLayout>
@@ -123,7 +123,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Top Players"
+            android:text="@string/top_players"
             android:textSize="18sp"
             android:textStyle="bold"
             android:textColor="@color/flip_tint_light"/>
@@ -132,7 +132,7 @@
             android:id="@+id/refreshButton"
             android:layout_width="32dp"
             android:layout_height="32dp"
-            android:src="@drawable/ic_dashboard_black_24dp"
+            android:src="@drawable/baseline_refresh_24"
             android:padding="4dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             app:tint="@color/flip_accent"
@@ -156,7 +156,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="32dp"
-        android:text="No leaderboard data yet.\nPlay some games to get started! 🎮"
+        android:text="@string/no_leaderboard_data_yet_nplay_some_games_to_get_started"
         android:textSize="16sp"
         android:textColor="@color/flip_mid"
         android:textAlignment="center"

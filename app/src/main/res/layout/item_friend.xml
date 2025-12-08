@@ -45,7 +45,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:text="1,234 pts"
+                android:text="@string/_1_234_pts"
                 android:textSize="14sp"
                 android:textColor="@color/flip_mid"/>
 

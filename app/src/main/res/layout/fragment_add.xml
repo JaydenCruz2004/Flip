@@ -15,7 +15,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="👥 Add Friends"
+            android:text="@string/add_friends"
             android:textSize="32sp"
             android:textStyle="bold"
             android:textColor="@color/flip_accent"
@@ -24,7 +24,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Search for friends and manage requests"
+            android:text="@string/search_for_friends_and_manage_requests"
             android:textSize="14sp"
             android:textColor="@color/flip_mid"
             android:layout_marginBottom="24dp"/>
@@ -53,7 +53,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Friend Requests"
+                        android:text="@string/friend_requests"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         android:textColor="@color/flip_tint_light"/>
@@ -65,7 +65,7 @@
                         android:layout_alignParentEnd="true"
                         android:background="@drawable/bg_social_circle"
                         android:gravity="center"
-                        android:text="0"
+                        android:text="@string/_0"
                         android:textSize="12sp"
                         android:textStyle="bold"
                         android:textColor="@color/flip_tint_light"
@@ -100,7 +100,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Search Users"
+                    android:text="@string/search_users"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:textColor="@color/flip_tint_light"
@@ -125,7 +125,7 @@
                         android:id="@+id/searchInput"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Search by username..."
+                        android:hint="@string/search_by_username"
                         android:textSize="16sp"
                         android:textColor="@color/flip_tint_light"
                         android:textColorHint="@color/flip_mid"
@@ -147,7 +147,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="No users found"
+                    android:text="@string/no_users_found"
                     android:textSize="14sp"
                     android:textColor="@color/flip_mid"
                     android:padding="16dp"

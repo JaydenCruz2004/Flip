@@ -16,7 +16,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="🎮 Games"
+            android:text="@string/games"
             android:textSize="36sp"
             android:textStyle="bold"
             android:textColor="@color/flip_accent"
@@ -25,7 +25,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Learn while you play!"
+            android:text="@string/learn_while_you_play"
             android:textSize="16sp"
             android:textColor="@color/flip_mid"
             android:layout_marginBottom="32dp"/>
@@ -52,7 +52,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="⚡ Type Race"
+                    android:text="@string/type_race"
                     android:textSize="24sp"
                     android:textStyle="bold"
                     android:textColor="@color/flip_tint_light"
@@ -61,7 +61,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Answer questions as fast as you can! Test your speed and knowledge across Math, Geography, and Science."
+                    android:text="@string/answer_questions_as_fast_as_you_can_test_your_speed_and_knowledge_across_math_geography_and_science"
                     android:textSize="14sp"
                     android:textColor="@color/flip_mid"
                     android:lineSpacingExtra="4dp"/>
@@ -90,7 +90,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="🎴 Memory Match"
+                    android:text="@string/memory_match"
                     android:textSize="24sp"
                     android:textStyle="bold"
                     android:textColor="@color/flip_tint_light"
@@ -99,7 +99,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Match terms with their definitions! Create your own cards and test your memory skills."
+                    android:text="@string/match_terms_with_their_definitions_create_your_own_cards_and_test_your_memory_skills"
                     android:textSize="14sp"
                     android:textColor="@color/flip_mid"
                     android:lineSpacingExtra="4dp"/>
@@ -128,7 +128,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="📝 Quiz Generator"
+                    android:text="@string/quiz_generator"
                     android:textSize="24sp"
                     android:textStyle="bold"
                     android:textColor="@color/flip_tint_light"
@@ -137,7 +137,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Paste your notes and get a custom quiz! Perfect for exam prep."
+                    android:text="@string/paste_your_notes_and_get_a_custom_quiz_perfect_for_exam_prep"
                     android:textSize="14sp"
                     android:textColor="@color/flip_mid"
                     android:lineSpacingExtra="4dp"/>
@@ -149,7 +149,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:text="More games coming soon! 🚀"
+            android:text="@string/more_games_coming_soon"
             android:textSize="14sp"
             android:textColor="@color/flip_mid"
             android:textStyle="italic"/>

@@ -35,7 +35,7 @@
             android:id="@+id/editActivityButton"
             android:layout_width="36dp"
             android:layout_height="36dp"
-            android:src="@drawable/ic_dashboard_black_24dp"
+            android:src="@drawable/ic_edit_pencil"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:padding="6dp"
             app:tint="@color/flip_mid"

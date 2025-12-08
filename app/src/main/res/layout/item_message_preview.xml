@@ -58,8 +58,7 @@
         <ImageView
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:src="@drawable/ic_dashboard_black_24dp"
-            android:rotation="270"
+            android:src="@drawable/ic_mail"
             app:tint="@color/flip_accent"/>
 
     </LinearLayout>

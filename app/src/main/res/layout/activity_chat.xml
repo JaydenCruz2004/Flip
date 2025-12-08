@@ -18,10 +18,9 @@
             android:id="@+id/backButton"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:src="@drawable/ic_home_black_24dp"
+            android:src="@drawable/baseline_arrow_back_24"
             android:background="?attr/selectableItemBackgroundBorderless"
-            app:tint="@color/flip_accent"
-            android:rotation="90"/>
+            app:tint="@color/flip_accent"/>
 
         <TextView
             android:id="@+id/friendUsernameText"
@@ -72,9 +71,8 @@
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginStart="8dp"
-            android:src="@drawable/ic_dashboard_black_24dp"
+            android:src="@drawable/baseline_send_24"
             android:background="@drawable/bg_social_circle"
-            android:rotation="270"
             app:tint="@color/flip_accent"/>
 
     </LinearLayout>

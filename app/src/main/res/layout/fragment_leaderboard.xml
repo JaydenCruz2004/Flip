@@ -142,7 +142,7 @@
             android:id="@+id/refreshButton"
             android:layout_width="32dp"
             android:layout_height="32dp"
-            android:src="@drawable/ic_dashboard_black_24dp"
+            android:src="@drawable/baseline_refresh_24"
             android:padding="4dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             app:tint="@color/flip_accent"

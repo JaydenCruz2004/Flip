@@ -22,8 +22,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public class MessagesTabFragment extends Fragment {
@@ -63,7 +65,7 @@ public class MessagesTabFragment extends Fragment {
         messagesRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Set<String> friendIds = new HashSet<>();
+                Map<String, ChatInfo> chatsMap = new HashMap<>();
 
                 for (DataSnapshot chatSnapshot : snapshot.getChildren()) {
                     String chatId = chatSnapshot.getKey();
@@ -71,17 +73,39 @@ public class MessagesTabFragment extends Fragment {
                         // Extract friend ID from chatId
                         String[] ids = chatId.split("_");
                         String friendId = ids[0].equals(currentUserId) ? ids[1] : ids[0];
-                        friendIds.add(friendId);
+
+                        DataSnapshot lastMessageSnapshot = null;
+                        long latestTimestamp = 0;
+
+                        for (DataSnapshot messageSnapshot : chatSnapshot.getChildren()) {
+                            Long timestamp = messageSnapshot.child("timestamp").getValue(Long.class);
+                            if (timestamp != null && timestamp > latestTimestamp) {
+                                latestTimestamp = timestamp;
+                                lastMessageSnapshot = messageSnapshot;
+                            }
+                        }
+
+                        if (lastMessageSnapshot != null) {
+                            String message = lastMessageSnapshot.child("message").getValue(String.class);
+                            String senderId = lastMessageSnapshot.child("senderId").getValue(String.class);
+
+                            ChatInfo chatInfo = new ChatInfo();
+                            chatInfo.friendId = friendId;
+                            chatInfo.lastMessage = message != null ? message : "";
+                            chatInfo.timestamp = latestTimestamp;
+                            chatInfo.sentByMe = currentUserId.equals(senderId);
+
+                            chatsMap.put(friendId, chatInfo);
+                        }
                     }
                 }
 
-                if (friendIds.isEmpty()) {
+                if (chatsMap.isEmpty()) {
                     showEmptyState();
                 } else {
-                    displayConversations(new ArrayList<>(friendIds));
+                    displayConversations(new ArrayList<>(chatsMap.values()));
                 }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 loadingSpinner.setVisibility(View.GONE);
@@ -90,24 +114,24 @@ public class MessagesTabFragment extends Fragment {
         });
     }
 
-    private void displayConversations(List<String> friendIds) {
+    private void displayConversations(List<ChatInfo> chats) {
         loadingSpinner.setVisibility(View.GONE);
         emptyStateText.setVisibility(View.GONE);
         messagesContainer.setVisibility(View.VISIBLE);
         messagesContainer.removeAllViews();
 
-        for (String friendId : friendIds) {
-            loadFriendAndAddConversation(friendId);
+        for (ChatInfo chat : chats) {
+            loadFriendAndAddConversation(chat);
         }
     }
 
-    private void loadFriendAndAddConversation(String friendId) {
-        DatabaseReference userRef = database.getReference("users").child(friendId);
+
+    private void loadFriendAndAddConversation(ChatInfo chatInfo) {
+        DatabaseReference userRef = database.getReference("users").child(chatInfo.friendId);
         userRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
-                    // Try both field names
                     String username = snapshot.child("Username").getValue(String.class);
                     if (username == null || username.isEmpty()) {
                         username = snapshot.child("username").getValue(String.class);
@@ -117,7 +141,7 @@ public class MessagesTabFragment extends Fragment {
                         username = email != null ? email.split("@")[0] : "User";
                     }
 
-                    addConversationItem(friendId, username);
+                    addConversationItem(chatInfo.friendId, username, chatInfo.lastMessage, chatInfo.sentByMe);
                 }
             }
 
@@ -128,7 +152,7 @@ public class MessagesTabFragment extends Fragment {
         });
     }
 
-    private void addConversationItem(String friendId, String friendUsername) {
+    private void addConversationItem(String friendId, String friendUsername, String lastMessage, boolean sentByMe) {
         View itemView = LayoutInflater.from(getContext())
                 .inflate(R.layout.item_message_preview, messagesContainer, false);
 
@@ -136,7 +160,21 @@ public class MessagesTabFragment extends Fragment {
         TextView lastMessageTV = itemView.findViewById(R.id.lastMessage);
 
         usernameTV.setText("@" + friendUsername);
-        lastMessageTV.setText("Tap to open chat");
+
+        // Show preview with sender info
+        String preview;
+        if (sentByMe) {
+            preview = "You: " + lastMessage;
+        } else {
+            preview = lastMessage;
+        }
+
+        // Limit preview length
+        if (preview.length() > 50) {
+            preview = preview.substring(0, 47) + "...";
+        }
+
+        lastMessageTV.setText(preview);
 
         itemView.setOnClickListener(v -> {
             Intent intent = new Intent(getContext(), ChatActivity.class);
@@ -152,5 +190,12 @@ public class MessagesTabFragment extends Fragment {
         loadingSpinner.setVisibility(View.GONE);
         messagesContainer.setVisibility(View.GONE);
         emptyStateText.setVisibility(View.VISIBLE);
+    }
+
+    private static class ChatInfo {
+        String friendId;
+        String lastMessage;
+        long timestamp;
+        boolean sentByMe;
     }
 }

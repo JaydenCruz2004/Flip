@@ -123,4 +123,43 @@
     <string name="friends">✓ Friends</string>
     <string name="add">Add</string>
     <string name="pending">Pending</string>
+    <string name="controllericon">🎮</string>
+    <string name="user">\@User</string>
+
+    <string name="day_streak">🔥 %1$d Day Streak</string>
+    <string name="zero_day_streak">🔥 0 Day Streak</string>
+    <string name="ranking_na">N/A</string>
+    <string name="points_format">%1$s pts</string>
+    <string name="username_format">\@%1$s</string>
+
+    <string name="failed_load_leaderboard">Failed to load leaderboard</string>
+    <string name="no_players_yet">No players yet. Be the first!</string>
+    <string name="default_username">User</string>
+
+    <string name="no_recent_activity">No recent activity</string>
+    <string name="friend_request_text">\@%1$s wants to be friends</string>
+    <string name="activity_icon_friends">👥</string>
+    <string name="activity_icon_game">🎮</string>
+
+    <string name="no_study_sessions">No study sessions scheduled</string>
+    <string name="time_range_format">%1$s - %2$s</string>
+
+    <string name="add_study_time">Add Study Time</string>
+    <string name="cancel">Cancel</string>
+    <string name="please_enter_title">Please enter a title</string>
+    <string name="please_select_times">Please select start and end times</string>
+    <string name="study_time_added">Study time added!</string>
+    <string name="failed_add_study_time">Failed to add study time</string>
+
+    <string name="days_ago">%1$dd ago</string>
+    <string name="hours_ago">%1$dh ago</string>
+    <string name="minutes_ago">%1$dm ago</string>
+
+    <string name="ordinal_th">TH</string>
+    <string name="ordinal_st">ST</string>
+    <string name="ordinal_nd">ND</string>
+    <string name="ordinal_rd">RD</string>
+
+
+
 </resources>

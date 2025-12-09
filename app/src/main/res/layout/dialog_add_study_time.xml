@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Study Session Title"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/studyTitleInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:maxLines="1" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select Date"
+        android:textColor="@color/flip_white"
+        android:textSize="14sp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp" />
+
+    <Button
+        android:id="@+id/selectDateButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Choose Date"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select Time"
+        android:textColor="@color/flip_white"
+        android:textSize="14sp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/selectStartTimeButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Start Time"
+            android:layout_marginEnd="8dp"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+
+        <Button
+            android:id="@+id/selectEndTimeButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="End Time"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+
+    </LinearLayout>
+
+</LinearLayout>

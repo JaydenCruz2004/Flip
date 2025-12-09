@@ -30,6 +30,13 @@
         <color name="flip_divider">#DDDBF4</color>
         <color name="flip_ink">#1D1B40</color>
         <color name="flip_ink_soft">#6A6794</color>
+
+    <color name="flip_dark">#1A1A1A</color>
+    <color name="flip_darker">#0D0D0D</color>
+    <color name="flip_accent_dark">#4F46E5</color>
+
+
+
     </resources>
 
 

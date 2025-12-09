@@ -159,7 +159,13 @@
     <string name="ordinal_st">ST</string>
     <string name="ordinal_nd">ND</string>
     <string name="ordinal_rd">RD</string>
-
+    <string name="study_session_title">Study Session Title</string>
+    <string name="select_date">Select Date</string>
+    <string name="choose_date">Choose Date</string>
+    <string name="select_time">Select Time</string>
+    <string name="start_time">Start Time</string>
+    <string name="end_time">End Time</string>
+    <string name="add_time">Add Time</string>
 
 
 </resources>

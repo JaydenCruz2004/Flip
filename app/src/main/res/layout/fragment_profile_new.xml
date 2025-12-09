@@ -39,7 +39,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="8dp"
-                android:text="@username"
+                android:text="@string/username"
                 android:textColor="@color/flip_tint_light"
                 android:textSize="20sp"
                 android:textStyle="bold"/>

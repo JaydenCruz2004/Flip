@@ -41,7 +41,7 @@
             android:id="@+id/usernameMini"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@username"
+            android:text="@string/username"
             android:textSize="14sp"
             android:textStyle="bold"
             android:textColor="@color/flip_tint_light"/>

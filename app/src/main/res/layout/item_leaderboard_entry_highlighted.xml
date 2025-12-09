@@ -57,7 +57,7 @@
             android:id="@+id/usernameText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@username"
+            android:text="@string/username"
             android:textSize="16sp"
             android:textStyle="bold"
             android:textColor="@color/flip_tint_light"/>

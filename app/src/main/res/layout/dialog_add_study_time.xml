@@ -8,7 +8,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Study Session Title"
+        android:hint="@string/study_session_title"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -23,7 +23,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Select Date"
+        android:text="@string/select_date"
         android:textColor="@color/flip_white"
         android:textSize="14sp"
         android:layout_marginTop="16dp"
@@ -33,13 +33,13 @@
         android:id="@+id/selectDateButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Choose Date"
+        android:text="@string/choose_date"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Select Time"
+        android:text="@string/select_time"
         android:textColor="@color/flip_white"
         android:textSize="14sp"
         android:layout_marginTop="16dp"
@@ -55,7 +55,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Start Time"
+            android:text="@string/start_time"
             android:layout_marginEnd="8dp"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
 
@@ -64,7 +64,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="End Time"
+            android:text="@string/end_time"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
 
     </LinearLayout>

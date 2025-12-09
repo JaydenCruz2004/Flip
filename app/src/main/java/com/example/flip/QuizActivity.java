@@ -1,4 +1,5 @@
 package com.example.flip;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -6,11 +7,24 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class QuizActivity extends AppCompatActivity {
+
     private TextView questionText, questionNumber, scoreText;
     private RadioGroup optionsGroup;
     private RadioButton optionA, optionB, optionC, optionD;
@@ -20,10 +34,20 @@ public class QuizActivity extends AppCompatActivity {
     private int currentQuestion = 0;
     private int score = 0;
 
+    // Firebase
+    private FirebaseAuth auth;
+    private FirebaseDatabase db;
+    private String uid;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
+
+        // Firebase init
+        auth = FirebaseAuth.getInstance();
+        db = FirebaseDatabase.getInstance();
+        uid = auth.getCurrentUser() != null ? auth.getCurrentUser().getUid() : null;
 
         questionText = findViewById(R.id.questionText);
         questionNumber = findViewById(R.id.questionNumber);
@@ -36,6 +60,7 @@ public class QuizActivity extends AppCompatActivity {
         submitButton = findViewById(R.id.submitButton);
         nextButton = findViewById(R.id.nextButton);
         backButton = findViewById(R.id.backButton);
+        backButton.setVisibility(View.INVISIBLE);
 
         String quizText = getIntent().getStringExtra("quizText");
         questions = parseQuestions(quizText);
@@ -75,11 +100,6 @@ public class QuizActivity extends AppCompatActivity {
 
     private List<Question> parseQuestions(String quizText) {
         List<Question> questionList = new ArrayList<>();
-
-        // Log the input for debugging
-        android.util.Log.d("QuizApp", "Parsing quiz text: " + quizText);
-
-        // Split by "Question:" and process each block
         String[] blocks = quizText.split("(?i)Question:");
 
         for (int i = 0; i < blocks.length; i++) {
@@ -129,16 +149,9 @@ public class QuizActivity extends AppCompatActivity {
                 if (!q.isEmpty() && !a.isEmpty() && !b.isEmpty() &&
                         !c.isEmpty() && !d.isEmpty() && !correct.isEmpty()) {
                     questionList.add(new Question(q, a, b, c, d, correct));
-                    android.util.Log.d("QuizApp", "Parsed question: " + q);
-                } else {
-                    android.util.Log.w("QuizApp", "Incomplete question in block " + i);
                 }
-            } catch (Exception e) {
-                android.util.Log.e("QuizApp", "Error parsing block " + i, e);
-            }
+            } catch (Exception ignored) {}
         }
-
-        android.util.Log.d("QuizApp", "Total questions parsed: " + questionList.size());
         return questionList;
     }
 
@@ -190,6 +203,54 @@ public class QuizActivity extends AppCompatActivity {
                 " (" + percentage + "%)");
 
         backButton.setVisibility(View.VISIBLE);
+
+        updateUserScoreInFirebase((int) percentage);
+    }
+
+    // Implement Firebase score update
+    private void updateUserScoreInFirebase(int percentageScore) {
+        if (uid == null) {
+            Toast.makeText(this, "User not logged in", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        int earnedPoints = percentageScore / 10;
+
+        DatabaseReference ref = db.getReference("users").child(uid);
+
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                Integer oldPoints = snapshot.child("points").getValue(Integer.class);
+                Integer games = snapshot.child("gamesPlayed").getValue(Integer.class);
+
+                int newPoints = (oldPoints != null ? oldPoints : 0) + earnedPoints;
+                int newGames = (games != null ? games : 0) + 1;
+
+                Map<String, Object> update = new HashMap<>();
+                update.put("points", newPoints);
+                update.put("gamesPlayed", newGames);
+
+                ref.updateChildren(update).addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        Toast.makeText(QuizActivity.this,
+                                "Saved! +" + earnedPoints + " points",
+                                Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(QuizActivity.this,
+                                "Error saving score", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(QuizActivity.this,
+                        "Database error: " + error.getMessage(),
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private static class Question {

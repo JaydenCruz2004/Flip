@@ -30,7 +30,7 @@ public class StartQuizActivity extends AppCompatActivity {
     private Button generateButton;
     private Button backButton;
     private ProgressBar progressBar;
-    private  String API_KEY;
+    private String API_KEY;
 
     private OkHttpClient client = new OkHttpClient();
 
@@ -65,7 +65,7 @@ public class StartQuizActivity extends AppCompatActivity {
         progressBar.setVisibility(View.VISIBLE);
         generateButton.setEnabled(false);
 
-        // get this error when i try to
+        // get this error Can not extract resource from com.android.aaptcompiler.ParsedResource@72e66fdb. when i try to
         // make the prompt a string resource Can not extract resource from com.android.aaptcompiler.ParsedResource@70aafed5.
         String prompt = "Convert the following notes into exactly 5 quiz questions. Format each question EXACTLY as shown below. Do not add any introduction, explanation, or extra text. Just output the questions in this exact format:\n\n" +
                 "Question: [question text]\n" +

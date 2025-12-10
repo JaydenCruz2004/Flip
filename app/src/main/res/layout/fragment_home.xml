@@ -306,7 +306,7 @@
                         android:layout_height="24dp"
                         android:layout_alignParentEnd="true"
                         android:contentDescription="Schedule"
-                        android:src="@drawable/ic_dashboard_black_24dp"
+                        android:src="@drawable/baseline_calendar_month_24"
                         app:tint="@color/flip_accent"/>
                 </RelativeLayout>
 

@@ -1,68 +1,106 @@
 # 🎓 FLIP – Mobile App Development Final Project  
 
-## Overview  
-This project is the **mobile implementation of the FLIP app**, originally designed in Figma by **Alexis Penuell** (with collaborators Peyton Giannone and Polina Iaremchuk).  
-
-FLIP is an interactive educational platform that uses **game-based learning** to support meaningful group learning among college students. The app seeks to combat the **loneliness epidemic** by fostering collaboration, in-person connections, and shared academic success.  
-
-This repository contains my final project for **Mobile App Development**, where I translated the UX/UI prototype into a functioning mobile application.  
+## 👥 Group Members  
+- **Jayden Cruz**  
+- **Jonathan Padilla**  
+- **Kyrellos Ibrahim**
 
 ---
 
-## 🎯 Objectives  
-- Convert the **Figma UX/UI prototype** into a fully functioning mobile app.  
-- Preserve the design intent: focus on **community, interactivity, and gamification**.  
-- Implement core features such as:  
-  - ✅ User registration & profiles  
-  - ✅ Study group creation and scheduling  
-  - ✅ Gamified learning sessions (leaderboards, points, study games)  
-  - ✅ Calendar sync for assignments/tests  
-  - ✅ Collaborative multiplayer projected game support (where feasible)  
+## 📘 Overview  
+This project is the **mobile implementation of the FLIP app**, originally designed in Figma by **Alexis Penuell** (with collaborators Peyton Giannone and Polina Iaremchuk).
+
+FLIP is an interactive educational platform that uses **game-based learning** to strengthen community and collaboration among college students. The app aims to address the **loneliness epidemic** by encouraging meaningful in-person interactions, shared learning, and goal-oriented engagement.
+
+This repository contains our final project for **Mobile App Development**, where we transformed the UX/UI prototype into a functioning mobile application.
 
 ---
 
-## 👩‍💻 Our Role  
-For this project, We worked on:  
-- Implementing UI screens based on the **provided Figma designs**  
-- Connecting navigation flows between screens  
-- Adding backend stubs for features like user groups, progress tracking, and leaderboards  
-- Testing layouts and responsiveness across mobile devices  
+## 🎯 Project Objectives  
+- Convert the **Figma UX/UI prototype** into a working mobile app  
+- Maintain the design intent focused on **community, interactivity, and gamification**  
+- Implement core collaborative and academic support features  
+- Ensure smooth navigation, clean UI, and intuitive user experience  
 
 ---
 
-## 📱 Features Implemented  
-- **Authentication & Profiles**  
-  - User registration and profile setup  
-- **Study Groups**  
-  - Create, join, and manage study groups  
-  - In-app messaging / coordination  
-- **Calendar Integration**  
-  - Sync with device calendar for assignment/test reminders  
-- **Gamified Learning**  
-  - Points system for engagement  
-  - Leaderboards for motivation  
-  - Generated study games (quiz-style modules)  
-- **UI Fidelity**  
-  - Maintains the branding, color palette, and layout choices from the original design  
-  - Adjustments made for accessibility and reduced scrolling  
+## 👩‍💻 Our Contributions  
+- Built and connected UI screens based on Figma designs  
+- Implemented navigation flows between major features  
+- Added backend logic and Firebase integration for authentication, points, leaderboard, and user activity  
+- Developed interactive study games  
+- Built the **AI Quiz Generator**, one of the app’s flagship features  
+- Tested app responsiveness, design fidelity, and accessibility  
+
+---
+
+## 📱 Core Features  
+
+### 🔐 Authentication  
+- Login and Signup screens  
+- Persistent user profile data  
+
+---
+
+### 🏠 Home Page  
+The main dashboard includes:  
+- **Leaderboard preview**  
+- **Recent activities feed**, including:  
+  - Friend requests  
+  - User-added events  
+- Quick actions to add new events to your schedule  
+
+---
+
+### 📅 Scheduling System  
+Users can create academic or study activities by selecting:  
+- Date  
+- Start time  
+- End time  
+
+Activities display on the home feed and profile page.
+
+---
+
+### 🎮 Study Games  
+FLIP uses gamification to enhance learning and motivation. Implemented games include:  
+- **Type Race Game** – test typing speed  
+- **Memory Match Game** – improve short-term memory  
+- **AI Quiz Generator** – converts notes into customizable multiple-choice quizzes  
+
+---
+
+### 👥 Friends & Messaging  
+- Add friends through the **Friends screen**  
+- Accept or decline friend requests  
+- View friends’ activities and progress  
+- Messaging capability (depending on version)  
+
+---
+
+### 🏆 Leaderboard  
+A dedicated leaderboard page shows:  
+- Rank  
+- Points  
+- Standing among peers  
+
+---
+
+### 👤 Profile Page  
+Users can view and manage:  
+- Total games played  
+- Points earned  
+- Personal ranking  
+- Friends list  
+- Messages  
+- Activities they’ve added  
+- Ability to add additional activities  
 
 ---
 
 ## 🛠️ Tech Stack  
-- **Frontend:** Flutter / React Native / Android Studio (specify what you used)  
-- **Backend (if applicable):** Firebase / Node.js (or mock data)  
-- **Database:** Firestore / SQLite (if implemented)  
-- **Design Reference:** Figma prototype by Alexis Penuell  
-
----
-
-## 📂 Project Structure  
-lib/ # Core source code
-├── screens/ # Individual app screens
-├── components/ # Reusable UI widgets
-├── models/ # Data models (Users, Groups, Games)
-├── services/ # API / backend services (Firebase, mock APIs)
-└── utils/ # Helpers, constants, validation
-assets/ # Icons, images, mock data
-README.md # Project documentation
-
+- **Firebase Authentication** – secure login & signup  
+- **Firebase Realtime Database** – user profiles, points, events, and leaderboard storage  
+- **OpenAI API** – used for generating quiz questions in the AI Quiz feature  
+- **Android Studio (Java)** – mobile app development  
+- **Figma** – design reference  

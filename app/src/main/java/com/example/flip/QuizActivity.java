@@ -99,65 +99,63 @@ public class QuizActivity extends AppCompatActivity {
     }
 
     private List<Question> parseQuestions(String quizText) {
-        List<Question> list = new ArrayList<>();
+        List<Question> questionList = new ArrayList<>();
 
-        // Split each question block by "Question:" (case-insensitive)
+
         String[] blocks = quizText.split("(?i)Question:");
 
-        for (String block : blocks) {
-            block = block.trim();
+        for (int i = 0; i < blocks.length; i++) {
+            String block = blocks[i].trim();
             if (block.isEmpty()) continue;
 
-            String question = "";
-            String a = "", b = "", c = "", d = "";
-            String correct = "";
+            try {
+                String[] lines = block.split("\n");
+                String q = "";
+                String a = "", b = "", c = "", d = "";
+                String correct = "";
 
-            String[] lines = block.split("\n");
+                for (String line : lines) {
+                    line = line.trim();
+                    if (line.isEmpty()) continue;
 
-            for (String line : lines) {
-                line = line.trim();
-                if (line.isEmpty()) continue;
-
-                // Identify the question text (first non-option, non-correct line)
-                if (question.isEmpty()
-                        && !line.matches("(?i)^[a-d]\\..*")
-                        && !line.toLowerCase().startsWith("correct")) {
-
-                    question = line;
-                    continue;
+                    // Extract question text (first non-option line)
+                    if (!line.matches("^[a-d]\\..*") &&
+                            !line.toLowerCase().startsWith("correct") &&
+                            q.isEmpty()) {
+                        q = line;
+                    }
+                    // Extract options
+                    else if (line.matches("^a\\..*")) {
+                        a = line.substring(2).trim();
+                    } else if (line.matches("^b\\..*")) {
+                        b = line.substring(2).trim();
+                    } else if (line.matches("^c\\..*")) {
+                        c = line.substring(2).trim();
+                    } else if (line.matches("^d\\..*")) {
+                        d = line.substring(2).trim();
+                    }
+                    // Extract correct answer
+                    else if (line.toLowerCase().startsWith("correct")) {
+                        // Extract just the letter (a, b, c, or d)
+                        correct = line.toLowerCase()
+                                .replaceAll("correct:?\\s*", "")
+                                .replaceAll("[^a-d]", "")
+                                .trim();
+                        if (correct.length() > 0) {
+                            correct = String.valueOf(correct.charAt(0));
+                        }
+                    }
                 }
 
-                // Identify options
-                if (line.matches("(?i)^a\\..*")) {
-                    a = line.substring(2).trim();
-                } else if (line.matches("(?i)^b\\..*")) {
-                    b = line.substring(2).trim();
-                } else if (line.matches("(?i)^c\\..*")) {
-                    c = line.substring(2).trim();
-                } else if (line.matches("(?i)^d\\..*")) {
-                    d = line.substring(2).trim();
+                // check for all required parts
+                if (!q.isEmpty() && !a.isEmpty() && !b.isEmpty() &&
+                        !c.isEmpty() && !d.isEmpty() && !correct.isEmpty()) {
+                    questionList.add(new Question(q, a, b, c, d, correct));
                 }
-
-                // Identify correct answer line
-                if (line.toLowerCase().startsWith("correct")) {
-                    // Keep only letters a–d
-                    correct = line.toLowerCase()
-                            .replaceAll("[^a-d]", "")
-                            .trim();
-                }
-            }
-
-            // Validate before adding
-            if (!question.isEmpty() &&
-                    !a.isEmpty() && !b.isEmpty() &&
-                    !c.isEmpty() && !d.isEmpty() &&
-                    !correct.isEmpty()) {
-
-                list.add(new Question(question, a, b, c, d, correct));
-            }
+            } catch (Exception ignored) {}
         }
+        return questionList;
 
-        return list;
     }
 
 

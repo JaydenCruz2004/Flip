@@ -103,4 +103,9 @@ Users can view and manage:
 - **Firebase Realtime Database** – user profiles, points, events, and leaderboard storage  
 - **OpenAI API** – used for generating quiz questions in the AI Quiz feature  
 - **Android Studio (Java)** – mobile app development  
-- **Figma** – design reference  
+- **Figma** – design reference
+
+---
+
+### Future Works  
+ - **Chat Bot** – Integrate a chatbot powered by OpenAI API to allow the user to ask any questions.
